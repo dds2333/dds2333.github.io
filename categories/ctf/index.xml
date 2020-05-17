@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ctf on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/categories/ctf/</link>
+    <description>Recent content in ctf on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 17 May 2020 09:04:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>虎符杯_Crypto_GM_WP</title>
+      <link>https://dds2333.github.io/post/2020/05/17/%E8%99%8E%E7%AC%A6%E6%9D%AF_crypto_gm_wp/</link>
+      <pubDate>Sun, 17 May 2020 09:04:53 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/05/17/%E8%99%8E%E7%AC%A6%E6%9D%AF_crypto_gm_wp/</guid>
+      <description>4月份参加的比赛，搞定了一道 Crypto ,还是太菜了 XD 下载附件得到以下两个文件： output： task.py 由 task.py 可知本题为 RSA 类别的题目，output 的第一部分为 p</description>
+    </item>
+    
+    <item>
+      <title>CTF 收集</title>
+      <link>https://dds2333.github.io/post/2020/04/20/ctf_collection/</link>
+      <pubDate>Mon, 20 Apr 2020 20:52:13 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/04/20/ctf_collection/</guid>
+      <description>Writeup https://github.com/p4-team/ctf https://github.com/balsn/ctf_writeup https://github.com/ctfs https://github.com/susers/Writeups https://github.com/hongriSec/CTF-Training CTF_Web https://github.com/wonderkun/CTF_web CTF_pwn https://github.com/pwning/public-writeup (pwn writeup) https://desword.github.io/tags/linux-pwn/ GDB及其插件的常用调试技巧 Binary-security https://github.com/r00tk1ts/binary-security-tutorial CTF_Crypto https://findneo.github.io/180727rsa-attack/ CTF中RSA套路 https://blog.betamao.me/2017/12/13/crypto-in-ctf/ https://blackdn.github.io/2020/04/14/CTF-Crypto-Encode-2020/ Practice https://adworld.xctf.org.cn/ https://pwnable.tw/</description>
+    </item>
+    
+  </channel>
+</rss>

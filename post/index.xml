@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/post/</link>
+    <description>Recent content in Posts on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 17 May 2020 09:04:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>虎符杯_Crypto_GM_WP</title>
+      <link>https://dds2333.github.io/post/2020/05/17/%E8%99%8E%E7%AC%A6%E6%9D%AF_crypto_gm_wp/</link>
+      <pubDate>Sun, 17 May 2020 09:04:53 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/05/17/%E8%99%8E%E7%AC%A6%E6%9D%AF_crypto_gm_wp/</guid>
+      <description>4月份参加的比赛，搞定了一道 Crypto ,还是太菜了 XD 下载附件得到以下两个文件： output： task.py 由 task.py 可知本题为 RSA 类别的题目，output 的第一部分为 p</description>
+    </item>
+    
+    <item>
+      <title>CTF 收集</title>
+      <link>https://dds2333.github.io/post/2020/04/20/ctf_collection/</link>
+      <pubDate>Mon, 20 Apr 2020 20:52:13 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/04/20/ctf_collection/</guid>
+      <description>Writeup https://github.com/p4-team/ctf https://github.com/balsn/ctf_writeup https://github.com/ctfs https://github.com/susers/Writeups https://github.com/hongriSec/CTF-Training CTF_Web https://github.com/wonderkun/CTF_web CTF_pwn https://github.com/pwning/public-writeup (pwn writeup) https://desword.github.io/tags/linux-pwn/ GDB及其插件的常用调试技巧 Binary-security https://github.com/r00tk1ts/binary-security-tutorial CTF_Crypto https://findneo.github.io/180727rsa-attack/ CTF中RSA套路 https://blog.betamao.me/2017/12/13/crypto-in-ctf/ https://blackdn.github.io/2020/04/14/CTF-Crypto-Encode-2020/ Practice https://adworld.xctf.org.cn/ https://pwnable.tw/</description>
+    </item>
+    
+    <item>
+      <title>vs2019 C# dll打包 exe 踩坑</title>
+      <link>https://dds2333.github.io/post/2020/04/18/vs2019_caikeng/</link>
+      <pubDate>Sat, 18 Apr 2020 19:14:20 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/04/18/vs2019_caikeng/</guid>
+      <description>写 Winform 或 WPF 程序用到第三方 dll，打包程序时就不能简单把 exe 拷出来，要不制作安装包（对于简单的程序来说麻烦），要不将调用的第三方 dll 嵌入到 exe 中，说到</description>
+    </item>
+    
+    <item>
+      <title>Vulnhub 靶机渗透之 FristLeaks_1.3</title>
+      <link>https://dds2333.github.io/post/2020/04/15/vulnhub_fristileaks1.3/</link>
+      <pubDate>Wed, 15 Apr 2020 23:06:31 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/04/15/vulnhub_fristileaks1.3/</guid>
+      <description>继续撸靶机 在不看 writeup 情况下，搞到一半，无法提权，还是老老实实看 writeup 才 Get flag. XD 靶机 https://www.vulnhub.com/entry/fristileaks-13,133/ 前期准备 运行环境：VM Workstation，VM Esxi，Vi</description>
+    </item>
+    
+    <item>
+      <title>渗透资料收集</title>
+      <link>https://dds2333.github.io/post/2020/03/07/ptest_things/</link>
+      <pubDate>Sat, 07 Mar 2020 11:49:19 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/03/07/ptest_things/</guid>
+      <description>(～￣▽￣)～ OSCP资源整理 https://github.com/CyDefUnicorn/OSCP-Archives https://github.com/StevenDias33/Offensive-Security-Certified-Professional https://github.com/xuanhusec/OscpStudyGroup 渗透测试Wiki - https://wiki.tsondt.com/pages/05-penetration-testing.html Web渗透资料 - https://www.hackingarticles.in/web-penetration-testing/ 参考：https://www.lshack.cn/656/ 补充 什么</description>
+    </item>
+    
+    <item>
+      <title>密码法</title>
+      <link>https://dds2333.github.io/post/2020/02/17/cryptography_law/</link>
+      <pubDate>Mon, 17 Feb 2020 22:21:54 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/02/17/cryptography_law/</guid>
+      <description>中华人民共和国密码法 （2019年10月26日第十三届全国人民代表大会常务委员会第十四次会议通过） 目录 第一章 总则 第二章 核心密码、普通密码 第三章</description>
+    </item>
+    
+    <item>
+      <title>网络安全法</title>
+      <link>https://dds2333.github.io/post/2020/02/17/cyber_security_law/</link>
+      <pubDate>Mon, 17 Feb 2020 22:21:25 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/02/17/cyber_security_law/</guid>
+      <description>中华人民共和国网络安全法 （2016年11月7日第十二届全国人民代表大会常务委员会第二十四次会议通过） 目录 第一章 总则 第二章 网络安全支持与促进 第</description>
+    </item>
+    
+    <item>
+      <title>Vulnhub 靶机渗透之 Joker</title>
+      <link>https://dds2333.github.io/post/2019/12/19/vulnhub_joker/</link>
+      <pubDate>Thu, 19 Dec 2019 22:09:46 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/12/19/vulnhub_joker/</guid>
+      <description>靶机 https://www.vulnhub.com/entry/ha-joker,379/ 前期准备 运行环境：VM Workstation，VM Esxi 目标 获取 root 权限并且读取/root/final.txt 主机信息 在 VM Workstation 中打开导入的虚拟</description>
+    </item>
+    
+    <item>
+      <title>工具列表</title>
+      <link>https://dds2333.github.io/post/2019/12/08/list_of_tools/</link>
+      <pubDate>Sun, 08 Dec 2019 18:41:28 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/12/08/list_of_tools/</guid>
+      <description>1.资产识别 1）fofa，shodan，Censys.io 2）whois：http://whois.chinaz.com 3）云悉：http:</description>
+    </item>
+    
+    <item>
+      <title>IPv6测试</title>
+      <link>https://dds2333.github.io/post/2019/11/30/ipv6_test/</link>
+      <pubDate>Sat, 30 Nov 2019 14:04:39 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/11/30/ipv6_test/</guid>
+      <description>前言 IPv6从几年前嚷嚷着推广，然而貌似现实中并没有大量普及。个人用户的宽带一般也不会是公网IPv4地址（运营商也不会给，除非能以某种借口说</description>
+    </item>
+    
+    <item>
+      <title>数字证书验证</title>
+      <link>https://dds2333.github.io/post/2019/11/28/cert_tool/</link>
+      <pubDate>Thu, 28 Nov 2019 22:28:36 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/11/28/cert_tool/</guid>
+      <description>需求 由于公司所从事行业的性质，部门需要一个能对数字的格式、有效性进行检查的工具，特别是需要支持国密SM2证书。 一、开发环境及相关库的选择 鉴于</description>
+    </item>
+    
+    <item>
+      <title>Vulnhub 靶机渗透之 FourAndSix2.01</title>
+      <link>https://dds2333.github.io/post/2019/09/25/vulnhub_fourandsix2/</link>
+      <pubDate>Wed, 25 Sep 2019 22:02:51 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/09/25/vulnhub_fourandsix2/</guid>
+      <description>靶机 https://www.vulnhub.com/entry/fourandsix-201,266/ 前期准备 运行环境：VM Workstation，VM Esxi，VirtualBox 皆可 将下载的ova文件直接导入虚拟机 目标 获取 root 权限并且</description>
+    </item>
+    
+    <item>
+      <title>随意写写</title>
+      <link>https://dds2333.github.io/post/2019/09/17/think/</link>
+      <pubDate>Tue, 17 Sep 2019 21:13:06 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/09/17/think/</guid>
+      <description>想到什么就写什么吧 工作 毕业至今也一年多了，曾经对未来没什么规划，然而现在感觉也差不多。大四校招时拒了迪普的offer，听从父母意见去了佛山其</description>
+    </item>
+    
+    <item>
+      <title>运用密码学工具保护账号和密码</title>
+      <link>https://dds2333.github.io/post/2019/09/02/crypt/</link>
+      <pubDate>Mon, 02 Sep 2019 22:54:49 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/09/02/crypt/</guid>
+      <description>随着使用移动APP等日益增多，难免需要注册各种账号以便使用其服务，而脑子也难以记住越来越多的账号和密码。想过拿个小本本记下来，但久而久之更改</description>
+    </item>
+    
+    <item>
+      <title>解决vm kali虚拟机无法复制的问题</title>
+      <link>https://dds2333.github.io/post/2019/08/27/cp_vm_kali/</link>
+      <pubDate>Tue, 27 Aug 2019 23:06:44 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/08/27/cp_vm_kali/</guid>
+      <description>自从kali 2019更新几个版本后，发现不能复制文件到虚拟机了，而网上的解决方法也不太好用。 因此，考虑通过SSH连接的方式，实现kali虚拟</description>
+    </item>
+    
+    <item>
+      <title>Vultr VPS搭建SS</title>
+      <link>https://dds2333.github.io/post/2019/08/25/build_vps_ss/</link>
+      <pubDate>Sun, 25 Aug 2019 12:39:25 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/08/25/build_vps_ss/</guid>
+      <description>参考 https://hooray.github.io/posts/ef443e45/ https://iicoom.github.io/ 需要注意的地方 注册Vultr购买VPS时，移动和联通可以考虑新加坡、东京；电信可考虑洛杉矶、硅谷、西雅图 根据ping 延迟来决定选择哪</description>
+    </item>
+    
+    <item>
+      <title>Hugo&#43;Github.io搭建博客</title>
+      <link>https://dds2333.github.io/post/2019/08/24/2019-8-24-buildblog/</link>
+      <pubDate>Sat, 24 Aug 2019 13:07:06 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/08/24/2019-8-24-buildblog/</guid>
+      <description>基于Hugo，github.io搭建个人博客 参考 https://left23333.github.io/2019/07/利用hugo与git</description>
+    </item>
+    
+  </channel>
+</rss>

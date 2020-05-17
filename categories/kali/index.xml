@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kali on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/categories/kali/</link>
+    <description>Recent content in kali on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 27 Aug 2019 23:06:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/categories/kali/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>解决vm kali虚拟机无法复制的问题</title>
+      <link>https://dds2333.github.io/post/2019/08/27/cp_vm_kali/</link>
+      <pubDate>Tue, 27 Aug 2019 23:06:44 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/08/27/cp_vm_kali/</guid>
+      <description>自从kali 2019更新几个版本后，发现不能复制文件到虚拟机了，而网上的解决方法也不太好用。 因此，考虑通过SSH连接的方式，实现kali虚拟</description>
+    </item>
+    
+  </channel>
+</rss>

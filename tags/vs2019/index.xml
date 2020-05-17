@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vs2019 on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/tags/vs2019/</link>
+    <description>Recent content in vs2019 on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 18 Apr 2020 19:14:20 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/tags/vs2019/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>vs2019 C# dll打包 exe 踩坑</title>
+      <link>https://dds2333.github.io/post/2020/04/18/vs2019_caikeng/</link>
+      <pubDate>Sat, 18 Apr 2020 19:14:20 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/04/18/vs2019_caikeng/</guid>
+      <description>写 Winform 或 WPF 程序用到第三方 dll，打包程序时就不能简单把 exe 拷出来，要不制作安装包（对于简单的程序来说麻烦），要不将调用的第三方 dll 嵌入到 exe 中，说到</description>
+    </item>
+    
+  </channel>
+</rss>

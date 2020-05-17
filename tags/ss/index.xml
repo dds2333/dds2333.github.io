@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SS on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/tags/ss/</link>
+    <description>Recent content in SS on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 25 Aug 2019 12:39:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/tags/ss/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vultr VPS搭建SS</title>
+      <link>https://dds2333.github.io/post/2019/08/25/build_vps_ss/</link>
+      <pubDate>Sun, 25 Aug 2019 12:39:25 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/08/25/build_vps_ss/</guid>
+      <description>参考 https://hooray.github.io/posts/ef443e45/ https://iicoom.github.io/ 需要注意的地方 注册Vultr购买VPS时，移动和联通可以考虑新加坡、东京；电信可考虑洛杉矶、硅谷、西雅图 根据ping 延迟来决定选择哪</description>
+    </item>
+    
+  </channel>
+</rss>

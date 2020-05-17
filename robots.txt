@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://dds2333.github.io/sitemap.xml

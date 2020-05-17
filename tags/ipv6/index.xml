@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IPv6 on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/tags/ipv6/</link>
+    <description>Recent content in IPv6 on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 30 Nov 2019 14:04:39 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/tags/ipv6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>IPv6测试</title>
+      <link>https://dds2333.github.io/post/2019/11/30/ipv6_test/</link>
+      <pubDate>Sat, 30 Nov 2019 14:04:39 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/11/30/ipv6_test/</guid>
+      <description>前言 IPv6从几年前嚷嚷着推广，然而貌似现实中并没有大量普及。个人用户的宽带一般也不会是公网IPv4地址（运营商也不会给，除非能以某种借口说</description>
+    </item>
+    
+  </channel>
+</rss>

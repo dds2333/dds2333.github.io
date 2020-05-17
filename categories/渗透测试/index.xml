@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>渗透测试 on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in 渗透测试 on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 15 Apr 2020 23:06:31 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vulnhub 靶机渗透之 FristLeaks_1.3</title>
+      <link>https://dds2333.github.io/post/2020/04/15/vulnhub_fristileaks1.3/</link>
+      <pubDate>Wed, 15 Apr 2020 23:06:31 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/04/15/vulnhub_fristileaks1.3/</guid>
+      <description>继续撸靶机 在不看 writeup 情况下，搞到一半，无法提权，还是老老实实看 writeup 才 Get flag. XD 靶机 https://www.vulnhub.com/entry/fristileaks-13,133/ 前期准备 运行环境：VM Workstation，VM Esxi，Vi</description>
+    </item>
+    
+    <item>
+      <title>渗透资料收集</title>
+      <link>https://dds2333.github.io/post/2020/03/07/ptest_things/</link>
+      <pubDate>Sat, 07 Mar 2020 11:49:19 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/03/07/ptest_things/</guid>
+      <description>(～￣▽￣)～ OSCP资源整理 https://github.com/CyDefUnicorn/OSCP-Archives https://github.com/StevenDias33/Offensive-Security-Certified-Professional https://github.com/xuanhusec/OscpStudyGroup 渗透测试Wiki - https://wiki.tsondt.com/pages/05-penetration-testing.html Web渗透资料 - https://www.hackingarticles.in/web-penetration-testing/ 参考：https://www.lshack.cn/656/ 补充 什么</description>
+    </item>
+    
+    <item>
+      <title>Vulnhub 靶机渗透之 Joker</title>
+      <link>https://dds2333.github.io/post/2019/12/19/vulnhub_joker/</link>
+      <pubDate>Thu, 19 Dec 2019 22:09:46 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/12/19/vulnhub_joker/</guid>
+      <description>靶机 https://www.vulnhub.com/entry/ha-joker,379/ 前期准备 运行环境：VM Workstation，VM Esxi 目标 获取 root 权限并且读取/root/final.txt 主机信息 在 VM Workstation 中打开导入的虚拟</description>
+    </item>
+    
+    <item>
+      <title>Vulnhub 靶机渗透之 FourAndSix2.01</title>
+      <link>https://dds2333.github.io/post/2019/09/25/vulnhub_fourandsix2/</link>
+      <pubDate>Wed, 25 Sep 2019 22:02:51 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2019/09/25/vulnhub_fourandsix2/</guid>
+      <description>靶机 https://www.vulnhub.com/entry/fourandsix-201,266/ 前期准备 运行环境：VM Workstation，VM Esxi，VirtualBox 皆可 将下载的ova文件直接导入虚拟机 目标 获取 root 权限并且</description>
+    </item>
+    
+  </channel>
+</rss>

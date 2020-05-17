@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>虎符杯_Crypto_GM_WP - 泡枸杞的咸鱼</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="dds2333" /><meta name="description" content="4月份参加的比赛，搞定了一道 Crypto ,还是太菜了 XD 下载附件得到以下两个文件： output： task.py 由 task.py 可知本题为 RSA 类别的题目，output 的第一部分为 p" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.59.1 with theme even" />
+
+
+<link rel="canonical" href="https://dds2333.github.io/post/2020/05/17/%E8%99%8E%E7%AC%A6%E6%9D%AF_crypto_gm_wp/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="虎符杯_Crypto_GM_WP" />
+<meta property="og:description" content="4月份参加的比赛，搞定了一道 Crypto ,还是太菜了 XD 下载附件得到以下两个文件： output： task.py 由 task.py 可知本题为 RSA 类别的题目，output 的第一部分为 p" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dds2333.github.io/post/2020/05/17/%E8%99%8E%E7%AC%A6%E6%9D%AF_crypto_gm_wp/" />
+<meta property="article:published_time" content="2020-05-17T09:04:53+08:00" />
+<meta property="article:modified_time" content="2020-05-17T09:04:53+08:00" />
+<meta itemprop="name" content="虎符杯_Crypto_GM_WP">
+<meta itemprop="description" content="4月份参加的比赛，搞定了一道 Crypto ,还是太菜了 XD 下载附件得到以下两个文件： output： task.py 由 task.py 可知本题为 RSA 类别的题目，output 的第一部分为 p">
+
+
+<meta itemprop="datePublished" content="2020-05-17T09:04:53&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-17T09:04:53&#43;08:00" />
+<meta itemprop="wordCount" content="435">
+
+
+
+<meta itemprop="keywords" content="ctf," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="虎符杯_Crypto_GM_WP"/>
+<meta name="twitter:description" content="4月份参加的比赛，搞定了一道 Crypto ,还是太菜了 XD 下载附件得到以下两个文件： output： task.py 由 task.py 可知本题为 RSA 类别的题目，output 的第一部分为 p"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">泡枸杞的咸鱼</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">泡枸杞的咸鱼</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">虎符杯_Crypto_GM_WP</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-05-17 </span>
+        <div class="post-category">
+            <a href="/categories/ctf/"> ctf </a>
+            </div>
+          <span class="more-meta"> 约 435 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>4月份参加的比赛，搞定了一道 Crypto ,还是太菜了 XD</p>
+
+<p>下载附件得到以下两个文件：</p>
+
+<p>output：</p>
+
+<p><img src="/img/2020/05/17/output.png" alt="output" /></p>
+
+<p>task.py</p>
+
+<p><img src="/img/2020/05/17/task.png" alt="task" /></p>
+
+<p>由 task.py 可知本题为 RSA 类别的题目，output 的第一部分为 phi=(p-1)*(q-1)，第二部分为 N=p*q，第三部分为按位加密的密文。</p>
+
+<p>phi：</p>
+
+<p>9433451661749413225919414595243321311762902037908850954799703396083863718641136503053215995576558003171249192969972864840795298784730553210417983714593764557582927434784915177639731998310891168685999240937407871771369971713515313634198744616074610866924094854671900334810353127446778607137157751925680243990711180904598841255660443214091848674376245163953774717113246203928244509033734184913005865837620134831142880711832256634797590773413831659733615722574830257496801417760337073484838170554497953033487131634973371143357507027731899402777169516770264218656483487045393156894832885628843858316679793205572348688820</p>
+
+<p>N：</p>
+
+<p>9433451661749413225919414595243321311762902037908850954799703396083863718641136503053215995576558003171249192969972864840795298784730553210417983714593764557582927434784915177639731998310891168685999240937407871771369971713515313634198744616074610866924094854671900334810353127446778607137157751925680243990905528141072864168544519279897224494849206184262202130305820187569148057247731243651084258194009459936702909655448969693589800987266378249891157940262898554047247605049549997783511107373248462587318323152524969684724690316918761387154882496367769626921299091688377118938693074486325995308403232228282839975697</p>
+
+<p>enc：</p>
+
+<p>[8496947713967625688747051917345259919849436616378127353206205506038021293461527020161946574400176146891485385957784205610395979657632413714059788772154009625247319812180747880252792622607786831662770906618083260055375307283152779156046374949223651130182151637961986612962279450309600099007561129237942698815049037854849280208609836192610790091804945437651984019023488119575757202741525228601541312849428856402128908223668136814737595015697632233564641564297265843315503282099677245418512862603605854455747457289844970204592796599838807708185464118863991858628774060793091469902148505618063854053683802025104272242737L, 3821975570238613357809086371567645294936011650887348963699940559362491350302427260103053136240897247131898829678001091430328324888976446850850398553379083807041417622422302483244782735821628339123481969782358378946550852168035289256770460985872083926320944628963996424431121655082533250397690221796910212343850884623723978193835574954928395310744288586634227750389554284155693066143225219180179924909105208241568967550733169693235766203194833688349527756455298707071600274394141846255062034273957007624449391385234198744038949086834422360238042411148350057735839143597829523818407329475481765129224815789601127610789L,
+&hellip;
+]</p>
+
+<p>已知 phi 和 N 可以求出 p 和 q，但由于e是随机生成且数值比较大（x = random.randint(1, N)），无法通过常规方法解题。</p>
+
+<p>经过搜素找到 <a href="https://ctftime.org/writeup/16120">https://ctftime.org/writeup/16120</a> 中类似的题目（属于Goldwasser–Micali cryptosystem），知道 p，q 可以通过二次剩余判定进行解密。</p>
+
+<p>解密脚本如下（需要安装Sage Math）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#python3 sage Math
+n=9433451661749413225919414595243321311762902037908850954799703396083863718641136503053215995576558003171249192969972864840795298784730553210417983714593764557582927434784915177639731998310891168685999240937407871771369971713515313634198744616074610866924094854671900334810353127446778607137157751925680243990905528141072864168544519279897224494849206184262202130305820187569148057247731243651084258194009459936702909655448969693589800987266378249891157940262898554047247605049549997783511107373248462587318323152524969684724690316918761387154882496367769626921299091688377118938693074486325995308403232228282839975697
+phi=9433451661749413225919414595243321311762902037908850954799703396083863718641136503053215995576558003171249192969972864840795298784730553210417983714593764557582927434784915177639731998310891168685999240937407871771369971713515313634198744616074610866924094854671900334810353127446778607137157751925680243990711180904598841255660443214091848674376245163953774717113246203928244509033734184913005865837620134831142880711832256634797590773413831659733615722574830257496801417760337073484838170554497953033487131634973371143357507027731899402777169516770264218656483487045393156894832885628843858316679793205572348688820
+p=(n-phi+1-((n-phi+1)^2-4*n).nth_root(2))//2
+q=n//p
+print (n == p*q)
+Fp=Integers(p)
+flag=[...]#加密的flag 密文
+f2=[0 if Fp(f).is_square() else 1 for f in flag]
+print (hex(int(&#39;0&#39;+&#39;&#39;.join(str(i) for i in f2),2))[:])</pre></td></tr></table>
+</div>
+</div>
+<p>脚本解密结果为十六进制的字符串：0x666c61677b62643466313739302d663461322d343930342d623464322d3864623862323466643836347d，Hex解码即可得到flag：</p>
+
+<p>flag{bd4f1790-f4a2-4904-b4d2-8db8b24fd864}</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dds2333</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-05-17
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/ctf/">ctf</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/2020/04/20/ctf_collection/">
+            <span class="next-text nav-default">CTF 收集</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dds2014@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dds2333" class="iconfont icon-github" title="github"></a>
+  <a href="https://dds2333.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dds2333</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

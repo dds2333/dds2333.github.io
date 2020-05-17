@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>数字证书验证 - 泡枸杞的咸鱼</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="dds2333" /><meta name="description" content="需求 由于公司所从事行业的性质，部门需要一个能对数字的格式、有效性进行检查的工具，特别是需要支持国密SM2证书。 一、开发环境及相关库的选择 鉴于" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.59.1 with theme even" />
+
+
+<link rel="canonical" href="https://dds2333.github.io/post/2019/11/28/cert_tool/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="数字证书验证" />
+<meta property="og:description" content="需求 由于公司所从事行业的性质，部门需要一个能对数字的格式、有效性进行检查的工具，特别是需要支持国密SM2证书。 一、开发环境及相关库的选择 鉴于" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dds2333.github.io/post/2019/11/28/cert_tool/" />
+<meta property="article:published_time" content="2019-11-28T22:28:36+08:00" />
+<meta property="article:modified_time" content="2019-11-28T22:28:36+08:00" />
+<meta itemprop="name" content="数字证书验证">
+<meta itemprop="description" content="需求 由于公司所从事行业的性质，部门需要一个能对数字的格式、有效性进行检查的工具，特别是需要支持国密SM2证书。 一、开发环境及相关库的选择 鉴于">
+
+
+<meta itemprop="datePublished" content="2019-11-28T22:28:36&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-28T22:28:36&#43;08:00" />
+<meta itemprop="wordCount" content="928">
+
+
+
+<meta itemprop="keywords" content="数字证书,C#," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="数字证书验证"/>
+<meta name="twitter:description" content="需求 由于公司所从事行业的性质，部门需要一个能对数字的格式、有效性进行检查的工具，特别是需要支持国密SM2证书。 一、开发环境及相关库的选择 鉴于"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">泡枸杞的咸鱼</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">泡枸杞的咸鱼</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">数字证书验证</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-11-28 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"> 密码学 </a>
+            </div>
+          <span class="more-meta"> 约 928 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#需求">需求</a></li>
+<li><a href="#一-开发环境及相关库的选择">一、开发环境及相关库的选择</a></li>
+<li><a href="#二-遇到的问题及解决方法">二、遇到的问题及解决方法</a>
+<ul>
+<li><a href="#1-crl分发点的获取">1.CRL分发点的获取</a></li>
+<li><a href="#2-证书签名值的获取">2.证书签名值的获取</a></li>
+<li><a href="#3-sm2证书签名值的验证">3.SM2证书签名值的验证</a></li>
+</ul></li>
+<li><a href="#三-最终效果">三、最终效果</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="需求">需求</h1>
+
+<p>由于公司所从事行业的性质，部门需要一个能对数字的格式、有效性进行检查的工具，特别是需要支持国密SM2证书。</p>
+
+<h1 id="一-开发环境及相关库的选择">一、开发环境及相关库的选择</h1>
+
+<p>鉴于本菜鸡比较熟悉C#而且在学校也写过SM2加密的程序，因此选用VS 2019进行开发Winform项目。选择C#的原因有三：首先，界面相对友好（不像古老的MFC）；其次，C#中自带X509Certificate2类；
+最后，C#还有BouncyCastle这一密码学库。介绍完了，开搞！！！</p>
+
+<h1 id="二-遇到的问题及解决方法">二、遇到的问题及解决方法</h1>
+
+<h2 id="1-crl分发点的获取">1.CRL分发点的获取</h2>
+
+<p>这个问题困扰我了很久，由于数字证书是以ASN1编码存储的，直接获取并不能通过ToString()方法转换成可读的字符串，试过多种方法无果后，某天google到相关的代码，才解决此问题。</p>
+
+<p>代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">//获取CRL分发点
+var crlinfo = cert.Extensions[&#34;2.5.29.31&#34;];
+var crlDistribitionPoints = new AsnEncodedData(crlinfo.Oid, crlinfo.RawData).Format(true);
+listView1.Items[11].SubItems.Add(crlDistribitionPoints);</pre></td></tr></table>
+</div>
+</div>
+<h2 id="2-证书签名值的获取">2.证书签名值的获取</h2>
+
+<p>仅通过C#的X509Certificate2类并不能获取到证书的签名值，需要结合BouncyCastle的方法进行获取，而获取证书签名值主要是为了后续验证国密SM2证书的签名。</p>
+
+<p>代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">//签名值
+if (cert.SignatureAlgorithm.Value == &#34;1.2.156.10197.1.501&#34;)
+{
+    //SM2证书
+    string sig_str_tmp = cert2.CertificateStructure.Signature.ToString();
+    string sig_r;
+    string sig_s;
+    if (sig_str_tmp[15] == &#39;0&#39; &amp;&amp; sig_str_tmp[16] == &#39;0&#39;)
+    {
+        sig_r = sig_str_tmp.Substring(17, 64);
+    }
+    else
+    {
+        sig_r = sig_str_tmp.Substring(15, 64);
+    }
+    sig_s = sig_str_tmp.Substring(sig_str_tmp.Length - 64);
+    //sig_value = sig_r + sig_s;
+    listView1.Items[16].SubItems.Add(sig_r + sig_s);
+}
+else
+{
+    //国际算法证书
+    listView1.Items[16].SubItems.Add(cert2.CertificateStructure.Signature.ToString());
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="3-sm2证书签名值的验证">3.SM2证书签名值的验证</h2>
+
+<p>一个证书的签名值往往是由它上级CA的私钥对其基本证书域进行签名而得来的（自签名证书及顶级根CA除外），由于Windows不识别SM2算法，无法通过构建证书链验证证书，因此需要手动验证。</p>
+
+<p>对于SM2签名验签的原理，此处不再赘述。验签函数具体实现如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">/// &lt;summary&gt;
+/// SM2证书签名验证
+/// &lt;/summary&gt;
+/// &lt;param name=&#34;pubkey&#34;&gt;&lt;/param&gt;
+/// &lt;param name=&#34;sourceData&#34;&gt;&lt;/param&gt;
+/// &lt;param name=&#34;sign&#34;&gt;&lt;/param&gt;
+/// &lt;returns&gt;&lt;/returns&gt;
+public bool Verify(string pubkey, byte[] sourceData,byte[] sign) 
+{
+    ECPoint userKey;
+    X9ECParameters sm2ECParameters = GMNamedCurves.GetByName(&#34;sm2p256v1&#34;);
+    ECDomainParameters domainParameters = new ECDomainParameters(sm2ECParameters.Curve, sm2ECParameters.G, sm2ECParameters.N);
+    //公钥
+    userKey = sm2ECParameters.Curve.DecodePoint(Hex.Decode(pubkey));
+    ECPublicKeyParameters publicKeyParameters = new ECPublicKeyParameters(userKey, domainParameters);
+
+    SM2Signer sm2Signer = new SM2Signer();
+    var param = new ParametersWithID(publicKeyParameters, Encoding.Default.GetBytes(&#34;1234567812345678&#34;));
+    sm2Signer.Init(false, param);
+    sm2Signer.BlockUpdate(sourceData, 0, sourceData.Length);
+    bool verify = sm2Signer.VerifySignature(sign);
+    return verify;
+}</pre></td></tr></table>
+</div>
+</div>
+<p>调用验签函数后，根据返回值判断是否验签成功；函数的参数分别是公钥（上级CA的）、证书的基本证书域、签名值。</p>
+
+<p>而国际算法（如RSA）数字证书的验证就简单许多，直接调用X509Certificate2类的Verify()方法即可。</p>
+
+<h1 id="三-最终效果">三、最终效果</h1>
+
+<p>开发完成后的程序界面如下：</p>
+
+<p><img src="/img/2019/11/28/program.png" alt="数字证书验证工具" /></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dds2333</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-11-28
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6/">数字证书</a>
+          <a href="/tags/c/">C#</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2019/11/30/ipv6_test/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">IPv6测试</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2019/09/25/vulnhub_fourandsix2/">
+            <span class="next-text nav-default">Vulnhub 靶机渗透之 FourAndSix2.01</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dds2014@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dds2333" class="iconfont icon-github" title="github"></a>
+  <a href="https://dds2333.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dds2333</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

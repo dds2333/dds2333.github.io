@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>运用密码学工具保护账号和密码 - 泡枸杞的咸鱼</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="dds2333" /><meta name="description" content="随着使用移动APP等日益增多，难免需要注册各种账号以便使用其服务，而脑子也难以记住越来越多的账号和密码。想过拿个小本本记下来，但久而久之更改" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.59.1 with theme even" />
+
+
+<link rel="canonical" href="https://dds2333.github.io/post/2019/09/02/crypt/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="运用密码学工具保护账号和密码" />
+<meta property="og:description" content="随着使用移动APP等日益增多，难免需要注册各种账号以便使用其服务，而脑子也难以记住越来越多的账号和密码。想过拿个小本本记下来，但久而久之更改" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dds2333.github.io/post/2019/09/02/crypt/" />
+<meta property="article:published_time" content="2019-09-02T22:54:49+08:00" />
+<meta property="article:modified_time" content="2019-10-22T22:37:56+08:00" />
+<meta itemprop="name" content="运用密码学工具保护账号和密码">
+<meta itemprop="description" content="随着使用移动APP等日益增多，难免需要注册各种账号以便使用其服务，而脑子也难以记住越来越多的账号和密码。想过拿个小本本记下来，但久而久之更改">
+
+
+<meta itemprop="datePublished" content="2019-09-02T22:54:49&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-22T22:37:56&#43;08:00" />
+<meta itemprop="wordCount" content="854">
+
+
+
+<meta itemprop="keywords" content="加密," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="运用密码学工具保护账号和密码"/>
+<meta name="twitter:description" content="随着使用移动APP等日益增多，难免需要注册各种账号以便使用其服务，而脑子也难以记住越来越多的账号和密码。想过拿个小本本记下来，但久而久之更改"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">泡枸杞的咸鱼</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">泡枸杞的咸鱼</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">运用密码学工具保护账号和密码</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-09-02 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"> 密码学 </a>
+            </div>
+          <span class="more-meta"> 约 854 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#1-使用sm2文件加解密工具加密">1.使用SM2文件加解密工具加密</a></li>
+<li><a href="#2-使用sm2文件加解密工具解密">2.使用SM2文件加解密工具解密</a></li>
+<li><a href="#3-使用sm4文件加解密工具保护私钥">3.使用SM4文件加解密工具保护私钥</a></li>
+<li><a href="#4-其他保护方案">4.其他保护方案</a></li>
+<li><a href="#5-为什么大费周章">5.为什么大费周章</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>随着使用移动APP等日益增多，难免需要注册各种账号以便使用其服务，而脑子也难以记住越来越多的账号和密码。想过拿个小本本记下来，但久而久之更改密码什么的又太麻烦；某日拍脑袋一想，可以凭借浅薄的密码学知识写个程序啊！！！</p>
+
+<p>怎么说也是信息安全专业的（虽然很菜）。不知道经过多少日夜，本菜鸡用蹩脚的C#编程能力完成了基于SM2（椭圆曲线加密算法）的文件加解密工具，再后来从运营商跳槽到一个测评机构，写了一个基于SM4(也是国密算法)的文件加解密工具，且算是站在前人的肩膀上（基于公开的源码）学以致用吧。</p>
+
+<h1 id="1-使用sm2文件加解密工具加密">1.使用SM2文件加解密工具加密</h1>
+
+<p>比如加密我的账号及信息：</p>
+
+<p><img src="/img/2019/09/02/test1.png" alt="SSH登录kali" /></p>
+
+<p>然后选择生成或导入公钥进行加密，加密后的文件如下：</p>
+
+<p><img src="/img/2019/09/02/test2.png" alt="SSH登录kali" /></p>
+
+<h1 id="2-使用sm2文件加解密工具解密">2.使用SM2文件加解密工具解密</h1>
+
+<p>解密也很简单，导入私钥解密相应文件即可（私钥的安全性很重要）</p>
+
+<p>截图就不放了，涉及到个人敏感信息，嘿嘿</p>
+
+<h1 id="3-使用sm4文件加解密工具保护私钥">3.使用SM4文件加解密工具保护私钥</h1>
+
+<p>SM2是非对称加密算法，私钥的安全性至关重要，因此可使用SM4对称加密来保护私钥：</p>
+
+<p><img src="/img/2019/09/02/test3.png" alt="SSH登录kali" /></p>
+
+<p>选择CBC模式，输入密钥（通常说的口令或密码）完成加密。</p>
+
+<p>当需要用私钥解密时，就先用此工具解密得到私钥明文，接着再用私钥解密对应公钥加密的数据。</p>
+
+<h1 id="4-其他保护方案">4.其他保护方案</h1>
+
+<p>如果不自己写程序，那能不能用类似的工具保护敏感信息呢？答案是当然可以啦，比如：</p>
+
+<p>OpenPGP的gpg4win，安装之后名字叫“Kleopatra”（挠头？？）</p>
+
+<p><img src="/img/2019/09/02/test4.png" alt="SSH登录kali" /></p>
+
+<p>链接在此：<a href="https://www.gpg4win.org/">https://www.gpg4win.org/</a></p>
+
+<p>至于如何保护私钥，如果使用gpg4win不导出密钥文件的话，不用考虑；导出的话，可使用压缩软件压缩加密码保护。</p>
+
+<h1 id="5-为什么大费周章">5.为什么大费周章</h1>
+
+<p>也许互联网上不乏各种记密码的APP或软件，但真的安全么？若存在后门或者私自上传数据，那就更莫有隐私可言了（作为韭菜，估计也没啥隐私了🤣）。</p>
+
+<p>对于此类APP信不过很正常，而需要说明的是基于数学难题的密码算法在计算上是安全的，因此我需要做的是将加密后的文件多处备份，以防丢失导致无法恢复。</p>
+
+<p>最后，这两个工具相关代码片段在github都有，搜索SM2,SM4关键词即可。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dds2333</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-10-22
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%8A%A0%E5%AF%86/">加密</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2019/09/17/think/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">随意写写</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2019/08/27/cp_vm_kali/">
+            <span class="next-text nav-default">解决vm kali虚拟机无法复制的问题</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dds2014@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dds2333" class="iconfont icon-github" title="github"></a>
+  <a href="https://dds2333.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dds2333</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
