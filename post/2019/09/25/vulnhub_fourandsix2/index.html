@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1 with theme even" />
+<meta name="generator" content="Hugo 0.72.0 with theme even" />
 
 
 <link rel="canonical" href="https://dds2333.github.io/post/2019/09/25/vulnhub_fourandsix2/" />
@@ -35,7 +35,7 @@
 
 
 
-<link href="/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css" rel="stylesheet">
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -47,16 +47,13 @@
 <meta property="article:modified_time" content="2019-09-25T22:02:51+08:00" />
 <meta itemprop="name" content="Vulnhub 靶机渗透之 FourAndSix2.01">
 <meta itemprop="description" content="靶机 https://www.vulnhub.com/entry/fourandsix-201,266/ 前期准备 运行环境：VM Workstation，VM Esxi，VirtualBox 皆可 将下载的ova文件直接导入虚拟机 目标 获取 root 权限并且">
-
-
 <meta itemprop="datePublished" content="2019-09-25T22:02:51&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-25T22:02:51&#43;08:00" />
 <meta itemprop="wordCount" content="914">
 
 
 
-<meta itemprop="keywords" content="Vulnhub,渗透测试," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Vulnhub,渗透测试," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vulnhub 靶机渗透之 FourAndSix2.01"/>
 <meta name="twitter:description" content="靶机 https://www.vulnhub.com/entry/fourandsix-201,266/ 前期准备 运行环境：VM Workstation，VM Esxi，VirtualBox 皆可 将下载的ova文件直接导入虚拟机 目标 获取 root 权限并且"/>
 
@@ -92,7 +89,7 @@
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
       </a><a href="/about/">
-        <li class="mobile-menu-item">关于我</li>
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -113,7 +110,7 @@
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于我</a>
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -218,10 +215,10 @@
 <p>7z-crack.sh：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">cat $2 | while read line;do if 7z e $1 -p&#34;$line&#34; 1&gt;/dev/null 2&gt;/dev/null;then echo &#34;FOUND PASSWORD:&#34;$line;break;fi;done</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">cat $2 | while read line;do if 7z e $1 -p&#34;$line&#34; 1&gt;/dev/null 2&gt;/dev/null;then echo &#34;FOUND PASSWORD:&#34;$line;break;fi;done</code></pre></td></tr></table>
 </div>
 </div>
 <p>命令如下：</p>
@@ -247,10 +244,10 @@
 <p>id_rsa-crack.sh：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">cat /usr/share/wordlists/rockyou.txt | while read line;do if ssh-keygen -p -P $line -N $line -f /root/id_rsa 1&gt;/dev/null 2&gt;/dev/null;then echo &#34;PASSWORD FOUND : &#34;$line;break;fi;done;</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">cat /usr/share/wordlists/rockyou.txt | while read line;do if ssh-keygen -p -P $line -N $line -f /root/id_rsa 1&gt;/dev/null 2&gt;/dev/null;then echo &#34;PASSWORD FOUND : &#34;$line;break;fi;done;</code></pre></td></tr></table>
 </div>
 </div>
 <p>命令如下：</p>
@@ -266,39 +263,39 @@
 <p>查看当前用户权限及系统信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">fourandsix2$ id
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">fourandsix2$ id
 
 uid=1000(user) gid=1000(user) groups=1000(user), 0(wheel)
 
 fourandsix2$ uname -a
 
-OpenBSD fourandsix2.localdomain 6.4 GENERIC#349 amd64</pre></td></tr></table>
+OpenBSD fourandsix2.localdomain 6.4 GENERIC#349 amd64</code></pre></td></tr></table>
 </div>
 </div>
 <p>查看/etc目录，有 doas.conf</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">fourandsix2$ cat /etc/doas.conf
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">fourandsix2$ cat /etc/doas.conf
 
 permit nopass keepenv user as root cmd /usr/bin/less args /var/log/authlog
 
-permit nopass keepenv root as root</pre></td></tr></table>
+permit nopass keepenv root as root</code></pre></td></tr></table>
 </div>
 </div>
 <blockquote>
@@ -414,6 +411,15 @@ permit nopass keepenv root as root</pre></td></tr></table>
 
 
 <script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 
 
 

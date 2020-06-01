@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1 with theme even" />
+<meta name="generator" content="Hugo 0.72.0 with theme even" />
 
 
 <link rel="canonical" href="https://dds2333.github.io/post/2019/11/28/cert_tool/" />
@@ -35,7 +35,7 @@
 
 
 
-<link href="/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css" rel="stylesheet">
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -47,16 +47,13 @@
 <meta property="article:modified_time" content="2019-11-28T22:28:36+08:00" />
 <meta itemprop="name" content="数字证书验证">
 <meta itemprop="description" content="需求 由于公司所从事行业的性质，部门需要一个能对数字的格式、有效性进行检查的工具，特别是需要支持国密SM2证书。 一、开发环境及相关库的选择 鉴于">
-
-
 <meta itemprop="datePublished" content="2019-11-28T22:28:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-11-28T22:28:36&#43;08:00" />
 <meta itemprop="wordCount" content="928">
 
 
 
-<meta itemprop="keywords" content="数字证书,C#," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="数字证书,C#," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="数字证书验证"/>
 <meta name="twitter:description" content="需求 由于公司所从事行业的性质，部门需要一个能对数字的格式、有效性进行检查的工具，特别是需要支持国密SM2证书。 一、开发环境及相关库的选择 鉴于"/>
 
@@ -92,7 +89,7 @@
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
       </a><a href="/about/">
-        <li class="mobile-menu-item">关于我</li>
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -113,7 +110,7 @@
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于我</a>
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -177,16 +174,16 @@
 <p>代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">//获取CRL分发点
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">//获取CRL分发点
 var crlinfo = cert.Extensions[&#34;2.5.29.31&#34;];
 var crlDistribitionPoints = new AsnEncodedData(crlinfo.Oid, crlinfo.RawData).Format(true);
-listView1.Items[11].SubItems.Add(crlDistribitionPoints);</pre></td></tr></table>
+listView1.Items[11].SubItems.Add(crlDistribitionPoints);</code></pre></td></tr></table>
 </div>
 </div>
 <h2 id="2-证书签名值的获取">2.证书签名值的获取</h2>
@@ -196,7 +193,7 @@ listView1.Items[11].SubItems.Add(crlDistribitionPoints);</pre></td></tr></table>
 <p>代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -220,9 +217,9 @@ listView1.Items[11].SubItems.Add(crlDistribitionPoints);</pre></td></tr></table>
 </span><span class="lnt">22
 </span><span class="lnt">23
 </span><span class="lnt">24
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">//签名值
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">//签名值
 if (cert.SignatureAlgorithm.Value == &#34;1.2.156.10197.1.501&#34;)
 {
     //SM2证书
@@ -245,7 +242,7 @@ else
 {
     //国际算法证书
     listView1.Items[16].SubItems.Add(cert2.CertificateStructure.Signature.ToString());
-}</pre></td></tr></table>
+}</code></pre></td></tr></table>
 </div>
 </div>
 <h2 id="3-sm2证书签名值的验证">3.SM2证书签名值的验证</h2>
@@ -255,7 +252,7 @@ else
 <p>对于SM2签名验签的原理，此处不再赘述。验签函数具体实现如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -278,9 +275,9 @@ else
 </span><span class="lnt">21
 </span><span class="lnt">22
 </span><span class="lnt">23
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">/// &lt;summary&gt;
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">/// &lt;summary&gt;
 /// SM2证书签名验证
 /// &lt;/summary&gt;
 /// &lt;param name=&#34;pubkey&#34;&gt;&lt;/param&gt;
@@ -302,7 +299,7 @@ public bool Verify(string pubkey, byte[] sourceData,byte[] sign)
     sm2Signer.BlockUpdate(sourceData, 0, sourceData.Length);
     bool verify = sm2Signer.VerifySignature(sign);
     return verify;
-}</pre></td></tr></table>
+}</code></pre></td></tr></table>
 </div>
 </div>
 <p>调用验签函数后，根据返回值判断是否验签成功；函数的参数分别是公钥（上级CA的）、证书的基本证书域、签名值。</p>
@@ -404,6 +401,15 @@ public bool Verify(string pubkey, byte[] sourceData,byte[] sign)
 
 
 <script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 
 
 

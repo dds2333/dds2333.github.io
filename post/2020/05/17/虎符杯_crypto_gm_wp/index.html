@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1 with theme even" />
+<meta name="generator" content="Hugo 0.72.0 with theme even" />
 
 
 <link rel="canonical" href="https://dds2333.github.io/post/2020/05/17/%E8%99%8E%E7%AC%A6%E6%9D%AF_crypto_gm_wp/" />
@@ -35,7 +35,7 @@
 
 
 
-<link href="/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css" rel="stylesheet">
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -47,16 +47,13 @@
 <meta property="article:modified_time" content="2020-05-17T09:04:53+08:00" />
 <meta itemprop="name" content="虎符杯_Crypto_GM_WP">
 <meta itemprop="description" content="4月份参加的比赛，搞定了一道 Crypto ,还是太菜了 XD 下载附件得到以下两个文件： output： task.py 由 task.py 可知本题为 RSA 类别的题目，output 的第一部分为 p">
-
-
 <meta itemprop="datePublished" content="2020-05-17T09:04:53&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-17T09:04:53&#43;08:00" />
 <meta itemprop="wordCount" content="435">
 
 
 
-<meta itemprop="keywords" content="ctf," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="ctf," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="虎符杯_Crypto_GM_WP"/>
 <meta name="twitter:description" content="4月份参加的比赛，搞定了一道 Crypto ,还是太菜了 XD 下载附件得到以下两个文件： output： task.py 由 task.py 可知本题为 RSA 类别的题目，output 的第一部分为 p"/>
 
@@ -92,7 +89,7 @@
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
       </a><a href="/about/">
-        <li class="mobile-menu-item">关于我</li>
+        <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
 </nav>
@@ -113,7 +110,7 @@
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于我</a>
+        <a class="menu-item-link" href="/about/">关于</a>
       </li>
   </ul>
 </nav>
@@ -180,7 +177,7 @@
 <p>解密脚本如下（需要安装Sage Math）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -190,9 +187,9 @@
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">#python3 sage Math
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#python3 sage Math
 n=9433451661749413225919414595243321311762902037908850954799703396083863718641136503053215995576558003171249192969972864840795298784730553210417983714593764557582927434784915177639731998310891168685999240937407871771369971713515313634198744616074610866924094854671900334810353127446778607137157751925680243990905528141072864168544519279897224494849206184262202130305820187569148057247731243651084258194009459936702909655448969693589800987266378249891157940262898554047247605049549997783511107373248462587318323152524969684724690316918761387154882496367769626921299091688377118938693074486325995308403232228282839975697
 phi=9433451661749413225919414595243321311762902037908850954799703396083863718641136503053215995576558003171249192969972864840795298784730553210417983714593764557582927434784915177639731998310891168685999240937407871771369971713515313634198744616074610866924094854671900334810353127446778607137157751925680243990711180904598841255660443214091848674376245163953774717113246203928244509033734184913005865837620134831142880711832256634797590773413831659733615722574830257496801417760337073484838170554497953033487131634973371143357507027731899402777169516770264218656483487045393156894832885628843858316679793205572348688820
 p=(n-phi+1-((n-phi+1)^2-4*n).nth_root(2))//2
@@ -201,7 +198,7 @@ print (n == p*q)
 Fp=Integers(p)
 flag=[...]#加密的flag 密文
 f2=[0 if Fp(f).is_square() else 1 for f in flag]
-print (hex(int(&#39;0&#39;+&#39;&#39;.join(str(i) for i in f2),2))[:])</pre></td></tr></table>
+print (hex(int(&#39;0&#39;+&#39;&#39;.join(str(i) for i in f2),2))[:])</code></pre></td></tr></table>
 </div>
 </div>
 <p>脚本解密结果为十六进制的字符串：0x666c61677b62643466313739302d663461322d343930342d623464322d3864623862323466643836347d，Hex解码即可得到flag：</p>
@@ -292,6 +289,15 @@ print (hex(int(&#39;0&#39;+&#39;&#39;.join(str(i) for i in f2),2))[:])</pre></td
 
 
 <script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 
 
 
