@@ -6,10 +6,19 @@
     <description>Recent content in 渗透测试 on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 15 Apr 2020 23:06:31 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2020 21:47:55 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vulnhub 靶机渗透之 Sar:1</title>
+      <link>https://dds2333.github.io/post/2020/06/07/vulnhub_sar-1/</link>
+      <pubDate>Sun, 07 Jun 2020 21:47:55 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/06/07/vulnhub_sar-1/</guid>
+      <description>靶机 https://www.vulnhub.com/entry/sar-1,425/ 前期准备 运行环境：VM Workstation，VM Esxi，VirtualBox 将下载的 ova 文件直接导入虚拟机 目标 获取 user、root</description>
+    </item>
     
     <item>
       <title>Vulnhub 靶机渗透之 FristLeaks_1.3</title>
