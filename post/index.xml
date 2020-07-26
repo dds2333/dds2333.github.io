@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 21 Jun 2020 17:21:29 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2020 16:34:08 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>密码学工具</title>
+      <link>https://dds2333.github.io/post/2020/07/ctypto_tool/</link>
+      <pubDate>Sun, 26 Jul 2020 16:34:08 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/07/ctypto_tool/</guid>
+      <description>概述 自从 BouncyCastle 支持 SM2、SM3、SM4 算法之后，一直想写个包含非对称加解密、对称加解密以及常见的杂凑算法的工具，也不知拖了多久，直到最近才完成</description>
+    </item>
     
     <item>
       <title>Vulnhub 靶机渗透之 pwnlab_init</title>

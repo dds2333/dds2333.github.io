@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>关于 - 泡枸杞的咸鱼</title>
+  <title>密码学工具 - 泡枸杞的咸鱼</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="dds2333" /><meta name="description" content="滴~~ 渗透、CTF 菜鸡" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="dds2333" /><meta name="description" content="概述 自从 BouncyCastle 支持 SM2、SM3、SM4 算法之后，一直想写个包含非对称加解密、对称加解密以及常见的杂凑算法的工具，也不知拖了多久，直到最近才完成" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.72.0 with theme even" />
 
 
-<link rel="canonical" href="https://dds2333.github.io/about/" />
+<link rel="canonical" href="https://dds2333.github.io/post/2020/07/ctypto_tool/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="关于" />
-<meta property="og:description" content="滴~~ 渗透、CTF 菜鸡" />
+<meta property="og:title" content="密码学工具" />
+<meta property="og:description" content="概述 自从 BouncyCastle 支持 SM2、SM3、SM4 算法之后，一直想写个包含非对称加解密、对称加解密以及常见的杂凑算法的工具，也不知拖了多久，直到最近才完成" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dds2333.github.io/about/" />
-<meta property="article:published_time" content="2019-08-20T21:38:52+08:00" />
-<meta property="article:modified_time" content="2019-08-31T15:41:52+08:00" />
-<meta itemprop="name" content="关于">
-<meta itemprop="description" content="滴~~ 渗透、CTF 菜鸡">
-<meta itemprop="datePublished" content="2019-08-20T21:38:52&#43;08:00" />
-<meta itemprop="dateModified" content="2019-08-31T15:41:52&#43;08:00" />
-<meta itemprop="wordCount" content="11">
+<meta property="og:url" content="https://dds2333.github.io/post/2020/07/ctypto_tool/" />
+<meta property="article:published_time" content="2020-07-26T16:34:08+08:00" />
+<meta property="article:modified_time" content="2020-07-26T16:34:08+08:00" />
+<meta itemprop="name" content="密码学工具">
+<meta itemprop="description" content="概述 自从 BouncyCastle 支持 SM2、SM3、SM4 算法之后，一直想写个包含非对称加解密、对称加解密以及常见的杂凑算法的工具，也不知拖了多久，直到最近才完成">
+<meta itemprop="datePublished" content="2020-07-26T16:34:08&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-26T16:34:08&#43;08:00" />
+<meta itemprop="wordCount" content="255">
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="关于"/>
-<meta name="twitter:description" content="滴~~ 渗透、CTF 菜鸡"/>
+<meta itemprop="keywords" content="加密,哈希," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="密码学工具"/>
+<meta name="twitter:description" content="概述 自从 BouncyCastle 支持 SM2、SM3、SM4 算法之后，一直想写个包含非对称加解密、对称加解密以及常见的杂凑算法的工具，也不知拖了多久，直到最近才完成"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -120,15 +120,125 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <article class="post">
-  <div class="post-content">
-    <p>滴~~</p>
+    
+    <header class="post-header">
+      <h1 class="post-title">密码学工具</h1>
 
-<p>渗透、CTF 菜鸡</p>
+      <div class="post-meta">
+        <span class="post-time"> 2020-07-26 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"> 密码学 </a>
+            </div>
+          <span class="more-meta"> 约 255 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        
+      </div>
+    </header>
 
-<p><img src="/img/jesus.gif" alt="滴" /></p>
-
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#概述">概述</a></li>
+<li><a href="#非对称加解密">非对称加解密</a></li>
+<li><a href="#对称加解密">对称加解密</a></li>
+<li><a href="#杂凑-哈希">杂凑（哈希）</a></li>
+<li><a href="#示例">示例</a>
+<ul>
+<li><a href="#sm2">SM2</a></li>
+<li><a href="#sm4">SM4</a></li>
+<li><a href="#杂凑">杂凑</a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
-</article>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="概述">概述</h1>
+
+<p>自从 BouncyCastle 支持 SM2、SM3、SM4 算法之后，一直想写个包含非对称加解密、对称加解密以及常见的杂凑算法的工具，也不知拖了多久，直到最近才完成初版，凑合着用吧。</p>
+
+<p>以下是工具的简单介绍（凑字数），工具以及核心代码放 Github：<a href="https://github.com/dds2333/Crypto_Tool">https://github.com/dds2333/Crypto_Tool</a></p>
+
+<h1 id="非对称加解密">非对称加解密</h1>
+
+<p>这里就不搞 RSA 了,支持下国密，界面如下图：</p>
+
+<p><img src="/img/2020/07/26/SM2.png" alt="SM2" /></p>
+
+<h1 id="对称加解密">对称加解密</h1>
+
+<p>对称算法采用 SM4,界面如下图：</p>
+
+<p><img src="/img/2020/07/26/SM4.png" alt="SM4" /></p>
+
+<h1 id="杂凑-哈希">杂凑（哈希）</h1>
+
+<p>杂凑算法支持SM3、MD5、SHA1、SHA2、SHA3，界面如下图：</p>
+
+<p><img src="/img/2020/07/26/HASH.png" alt="HASH" /></p>
+
+<h1 id="示例">示例</h1>
+
+<h2 id="sm2">SM2</h2>
+
+<p>加密：</p>
+
+<p><img src="/img/2020/07/26/SM2_Encrypt.png" alt="SM2_en" /></p>
+
+<p>解密：</p>
+
+<p><img src="/img/2020/07/26/SM2_Decrypt.png" alt="SM2_en" /></p>
+
+<h2 id="sm4">SM4</h2>
+
+<p>加密：</p>
+
+<p><img src="/img/2020/07/26/SM4_ecb_en.png" alt="SM4_en" /></p>
+
+<p>解密：</p>
+
+<p><img src="/img/2020/07/26/SM4_ecb_de.png" alt="SM4_de" /></p>
+
+<h2 id="杂凑">杂凑</h2>
+
+<p><img src="/img/2020/07/26/HASH_demo.png" alt="杂凑" /></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dds2333</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-07-26
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%8A%A0%E5%AF%86/">加密</a>
+          <a href="/tags/%E5%93%88%E5%B8%8C/">哈希</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/2020/06/21/vulnhub_pwnlab_init/">
+            <span class="next-text nav-default">Vulnhub 靶机渗透之 pwnlab_init</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
         </div>
         
 
