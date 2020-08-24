@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>虎符杯_Crypto_Mceliece_WP - 泡枸杞的咸鱼</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="dds2333" /><meta name="description" content="Em&amp;hellip;，此 Writeup 从举办方嫖来的，之前早已复现，现在翻出来水一篇。 XD 1.题目给了一个 mceliece 加密系统的实现，公钥和密文，需要还原明文 2.经" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.72.0 with theme even" />
+
+
+<link rel="canonical" href="https://dds2333.github.io/post/2020/08/24/%E8%99%8E%E7%AC%A6%E6%9D%AF_crypto_mceliece_wp/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="虎符杯_Crypto_Mceliece_WP" />
+<meta property="og:description" content="Em&hellip;，此 Writeup 从举办方嫖来的，之前早已复现，现在翻出来水一篇。 XD 1.题目给了一个 mceliece 加密系统的实现，公钥和密文，需要还原明文 2.经" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dds2333.github.io/post/2020/08/24/%E8%99%8E%E7%AC%A6%E6%9D%AF_crypto_mceliece_wp/" />
+<meta property="article:published_time" content="2020-08-24T22:35:32+08:00" />
+<meta property="article:modified_time" content="2020-08-24T22:35:32+08:00" />
+<meta itemprop="name" content="虎符杯_Crypto_Mceliece_WP">
+<meta itemprop="description" content="Em&hellip;，此 Writeup 从举办方嫖来的，之前早已复现，现在翻出来水一篇。 XD 1.题目给了一个 mceliece 加密系统的实现，公钥和密文，需要还原明文 2.经">
+<meta itemprop="datePublished" content="2020-08-24T22:35:32&#43;08:00" />
+<meta itemprop="dateModified" content="2020-08-24T22:35:32&#43;08:00" />
+<meta itemprop="wordCount" content="1149">
+
+
+
+<meta itemprop="keywords" content="ctf," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="虎符杯_Crypto_Mceliece_WP"/>
+<meta name="twitter:description" content="Em&hellip;，此 Writeup 从举办方嫖来的，之前早已复现，现在翻出来水一篇。 XD 1.题目给了一个 mceliece 加密系统的实现，公钥和密文，需要还原明文 2.经"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">泡枸杞的咸鱼</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">泡枸杞的咸鱼</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">虎符杯_Crypto_Mceliece_WP</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-08-24 </span>
+        <div class="post-category">
+            <a href="/categories/ctf/"> ctf </a>
+            </div>
+          <span class="more-meta"> 约 1149 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>Em&hellip;，此 Writeup 从举办方嫖来的，之前早已复现，现在翻出来水一篇。 XD</p>
+
+<p>1.题目给了一个 mceliece 加密系统的实现，公钥和密文，需要还原明文</p>
+
+<p>2.经过查找资料，可以找到破解 mceliece 的相关论文 Stern, Jacques. A method for finding codewords of small weight. Coding theory and applications, Volume 388 of Lecture Notes in Computer Science, 1989.提出了一种 Stern Attack 可以攻破该系统。</p>
+
+<p>3.编写 SternsAlgorithm.sage 用 Sage 实现这篇论文的攻击方法。</p>
+
+<p>4.编写 solve.sage，用 SternsAlgorithm 还原明文，得到 flag</p>
+
+<p>SternsAlgorithm.sage：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span><span class="lnt">94
+</span><span class="lnt">95
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">def _GetRandomPermutationMatrix(n):
+# Set up the permutation matrix
+rng = range(n); P = matrix(GF(2),n);
+for i in range(n):
+    p = floor(len(rng)*random());
+    P[i,rng[p]] = 1; rng=list(rng[:p])+list(rng[p+1:]);#此处需要加list()转换，python3与python2不同
+return copy(P);
+def _GetColumnVectorWeight(n):
+weight = 0;
+for i in range(n.nrows()):
+    if n[i,0] == 1:
+        weight = weight+1;
+return weight;
+def SternsAlgorithm(H, w, p, l):
+H_Stern = copy(H);
+codeword_found = false;
+#Begin Stern&#39;s Algorithm for finding a weight-w codeword of the code generated by H
+while (not codeword_found):
+    n_k = H_Stern.nrows();
+    k = H_Stern.ncols() - n_k;
+    I_n = identity_matrix(n_k);
+    singular = true;
+    P_Stern = 0; #initialize the permutation matrix
+    H_Prime = 0; #initialize the permuted parity-check matrix
+    #Search for (n-k) linearly independent columns.
+    while singular:
+        P_Stern = _GetRandomPermutationMatrix(H_Stern.ncols());
+        H_Prime = H_Stern*P_Stern; #permute the matrix
+        H_Prime.echelonize(); #row-reduce the first n-k columns
+        #If the selected n-k columns do not row-reduce, select a different combination of columns
+        if H_Prime.submatrix(0,0,n_k,n_k) == I_n:
+            singular = false;
+    #initialize and populate the set of n_k-l rows that will be deleted from H_Prime to leave l rows
+    Z = set();
+    while len(Z) &lt; n_k-l:
+        Z.add(randint(0,n_k-1)); #H.nrows()=n_k, but indices start at 0
+    Z = list(Z); Z.sort(); #Make Z a sorted list
+
+    #A copy of H_Prime with only the l selected rows (in Z) remaining
+    H_Prime_l = copy(H_Prime);
+    H_Prime_l = H_Prime_l.delete_rows(Z);
+    #Initialize the sets of indices of the columns of H_Prime_l
+    X_Indices = list(); Y_Indices = list();
+    #Assign a column indices to X or Y randomly (50/50 chance)
+    for i in range(k):
+        if randint(0,1)==0:
+            X_Indices.append(i+n_k);
+        else:
+            Y_Indices.append(i+n_k);
+    #Generate the size-p subsets of X and Y,
+    #and initialize the lists containing each subset&#39;s sum
+    Subsets_of_X_Indices = Subsets(X_Indices,p);
+    Subsets_of_Y_Indices = Subsets(Y_Indices,p);
+    pi_A = list();
+    pi_B = list();
+    #Calculate pi(A) for each subset of X
+    for i in range(Subsets_of_X_Indices.cardinality()):
+        column_sum = 0;
+        for j in range(p):
+            column_sum = column_sum + H_Prime_l.submatrix(0,Subsets_of_X_Indices[i][j],H_Prime_l.nrows(),1);
+    pi_A.append(column_sum);
+    #Calculate pi(B) for each subset of Y
+    for i in range(Subsets_of_Y_Indices.cardinality()):
+        column_sum = 0;
+        for j in range(p):
+            column_sum = column_sum + H_Prime_l.submatrix(0,Subsets_of_Y_Indices[i][j],H_Prime_l.nrows(),1);
+        pi_B.append(column_sum);
+    weight_w_codeword = 0; #initialize the codeword
+    #Check each pi(A) value against every pi(B) value to check for collisions
+    for i in range(len(pi_A)):
+        for j in range(len(pi_B)):
+        #If a collision occurs, calculate the n-k - bit vector computed by summing the
+        #entirety of the columns whose indices are in A U B
+            if pi_A[i] == pi_B[j]:  
+                sum = 0; #initialize the sum vector
+                for k in (Subsets_of_X_Indices[i]):
+                    sum = sum + H_Prime.submatrix(0,k,H_Prime.nrows(),1);
+                for k in (Subsets_of_Y_Indices[j]):
+                    sum = sum + H_Prime.submatrix(0,k,H_Prime.nrows(),1);
+                if _GetColumnVectorWeight(sum) == (w-2*p):
+                    codeword_found = true;
+                    #Since the sum vector has the appropriate weight, the codeword of weight w can now be calculated
+                    #Initialize the codeword
+                    weight_w_codeword = matrix(GF(2),H_Stern.ncols(),1);
+                    #Mark the appropriate positions of the codeword as ones
+                    for index in range(n_k):
+                        if sum[index,0]==1:
+                            weight_w_codeword[index,0] = 1;
+                    for k in Subsets_of_X_Indices[i]:
+                        weight_w_codeword[k,0] = 1;
+                    for k in Subsets_of_Y_Indices[j]:
+                        weight_w_codeword[k,0] = 1;
+                    #Undo the permuting done when selecting n-k linearly independent columns
+                    weight_w_codeword = weight_w_codeword.transpose()*(~P_Stern);
+                    return copy(weight_w_codeword);</code></pre></td></tr></table>
+</div>
+</div>
+<p>solve.sage：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">load(&#34;./SternsAlgorithm.sage&#34;)
+def SternsAttack(PK, encrypted_message, t, p, l):
+#Attacker has knowledge of PK and y (and presumably t), and is looking for a codeword of weight w
+y = encrypted_message;
+#Calculate a parity check matrix for the code G + {0,y}, where y = mG + e
+H = (PK.stack(y)).right_kernel().basis_matrix();
+w = t;
+#Find a weight w codeword
+weight_w_codeword = SternsAlgorithm(H, w, p, l);
+#Decrypt the message using the codeword found via Stern&#39;s Algorithm
+decrypted_message = PK.solve_left((y-weight_w_codeword));
+return decrypted_message;
+def encrypt(msg,crypto,l):
+bin = BinaryStrings()
+msg = map(int ,str(bin.encoding(msg)))
+msg+=[0 for i in range(l-(len(msg)%l))]
+assert(len(msg)%l == 0)
+cipher = []
+for i in range(len(msg)/l):
+    plain = matrix(GF(2),1,l)
+    for j in range(l):
+        plain[0,j] = msg[i*l+j]
+    encrypted = crypto.Encrypt(plain);
+    cipher.append(encrypted)
+return cipher
+def decrypt(cipher,crypto):
+plain = &#34;&#34;
+tmp = []
+for x in cipher:
+    decrypted = crypto.Decrypt(x)
+    tmp += [ x for x in decrypted[0]]
+tmp += [0 for i in range(8-(len(tmp)%8))] 
+print (bin_to_ascii(tmp))
+from sage.crypto.util import ascii_to_bin,bin_to_ascii
+m = 6
+n = 2**m
+t = floor((2+(2**m-1)/m)/2);
+pubkey = load(&#34;pubkey.sobj&#34;)
+cipher = load(&#34;cipher.sobj&#34;)
+plain = []
+for encrypted_message in cipher:
+    H = (pubkey.stack(encrypted_message)).right_kernel().basis_matrix();
+    p = 1;
+    k_2 = floor((H.ncols()-H.nrows())/2);
+    l_min = floor(log(k_2,2))-1;
+    for k in range(1):
+        l = l_min + k;
+        if (H.nrows() &lt; l):
+            l = H.nrows();
+        de = SternsAttack(pubkey,encrypted_message,t,p,l);
+        print (de)
+        plain+=de[0]
+plain += [0 for i in range(8-(len(plain)%8))] 
+print (bin_to_ascii(plain))</code></pre></td></tr></table>
+</div>
+</div>
+<p>solve.sage 加载 SternsAlgorithm.sage 进行解密，pubkey = load(&ldquo;pubkey.sobj&rdquo;) 加载公钥，cipher = load(&ldquo;cipher.sobj&rdquo;) 加载密文。</p>
+
+<p><img src="/img/2020/08/24/Mceliece_flag.png" alt="flag" /></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dds2333</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-08-24
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/ctf/">ctf</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2020/08/24/other_tips/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Other_tips</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2020/07/ctypto_tool/">
+            <span class="next-text nav-default">密码学工具</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dds2014@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dds2333" class="iconfont icon-github" title="github"></a>
+  <a href="https://dds2333.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dds2333</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -6,10 +6,19 @@
     <description>Recent content in ctf on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 17 May 2020 09:04:53 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2020 22:35:32 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>虎符杯_Crypto_Mceliece_WP</title>
+      <link>https://dds2333.github.io/post/2020/08/24/%E8%99%8E%E7%AC%A6%E6%9D%AF_crypto_mceliece_wp/</link>
+      <pubDate>Mon, 24 Aug 2020 22:35:32 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/08/24/%E8%99%8E%E7%AC%A6%E6%9D%AF_crypto_mceliece_wp/</guid>
+      <description>Em&amp;hellip;，此 Writeup 从举办方嫖来的，之前早已复现，现在翻出来水一篇。 XD 1.题目给了一个 mceliece 加密系统的实现，公钥和密文，需要还原明文 2.经</description>
+    </item>
     
     <item>
       <title>虎符杯_Crypto_GM_WP</title>

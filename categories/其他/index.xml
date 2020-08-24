@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>其他 on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/categories/%E5%85%B6%E4%BB%96/</link>
+    <description>Recent content in 其他 on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 24 Aug 2020 22:45:09 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/categories/%E5%85%B6%E4%BB%96/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Other_tips</title>
+      <link>https://dds2333.github.io/post/2020/08/24/other_tips/</link>
+      <pubDate>Mon, 24 Aug 2020 22:45:09 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/08/24/other_tips/</guid>
+      <description>收集一些工具及用法 🧐 图片转换：ImageMagick 官网：https://imagemagick.org/ 1 2 3 4 5 6 # macOS 需要安装 Ghostscript fonts $ brew install</description>
+    </item>
+    
+  </channel>
+</rss>
