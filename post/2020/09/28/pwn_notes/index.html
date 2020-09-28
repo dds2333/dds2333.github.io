@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>PWN Notes - 泡枸杞的咸鱼</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="dds2333" /><meta name="description" content="Pwn_notes 常规思路 检查保护情况 判断漏洞函数，如 gets，scanf 等 计算目标变量在堆栈中距离 epb 的偏移 分析是否已经载入可利用的函数，如 system，e" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.72.0 with theme even" />
+
+
+<link rel="canonical" href="https://dds2333.github.io/post/2020/09/28/pwn_notes/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="PWN Notes" />
+<meta property="og:description" content="Pwn_notes 常规思路 检查保护情况 判断漏洞函数，如 gets，scanf 等 计算目标变量在堆栈中距离 epb 的偏移 分析是否已经载入可利用的函数，如 system，e" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dds2333.github.io/post/2020/09/28/pwn_notes/" />
+<meta property="article:published_time" content="2020-09-28T21:58:28+08:00" />
+<meta property="article:modified_time" content="2020-09-28T21:58:28+08:00" />
+<meta itemprop="name" content="PWN Notes">
+<meta itemprop="description" content="Pwn_notes 常规思路 检查保护情况 判断漏洞函数，如 gets，scanf 等 计算目标变量在堆栈中距离 epb 的偏移 分析是否已经载入可利用的函数，如 system，e">
+<meta itemprop="datePublished" content="2020-09-28T21:58:28&#43;08:00" />
+<meta itemprop="dateModified" content="2020-09-28T21:58:28&#43;08:00" />
+<meta itemprop="wordCount" content="1951">
+
+
+
+<meta itemprop="keywords" content="PWN," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PWN Notes"/>
+<meta name="twitter:description" content="Pwn_notes 常规思路 检查保护情况 判断漏洞函数，如 gets，scanf 等 计算目标变量在堆栈中距离 epb 的偏移 分析是否已经载入可利用的函数，如 system，e"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">泡枸杞的咸鱼</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">泡枸杞的咸鱼</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">PWN Notes</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-09-28 </span>
+        <div class="post-category">
+            <a href="/categories/pwn/"> PWN </a>
+            </div>
+          <span class="more-meta"> 约 1951 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#pwn-notes">Pwn_notes</a>
+<ul>
+<li><a href="#常规思路">常规思路</a></li>
+<li><a href="#ida-pro-使用技巧">IDA Pro 使用技巧</a></li>
+<li><a href="#返回地址偏移获取">返回地址偏移获取</a>
+<ul>
+<li><a href="#方法一-ida-pattern-py">方法一：<code>IDA &amp;&amp; pattern.py</code></a></li>
+<li><a href="#方法二-gdb-pattern-py">方法二：<code>Gdb &amp;&amp; pattern.py</code></a></li>
+</ul></li>
+<li><a href="#gdb-调试技巧">GDB 调试技巧</a>
+<ul>
+<li><a href="#基础操作">基础操作</a></li>
+<li><a href="#查看数据">查看数据</a></li>
+<li><a href="#查找数据">查找数据</a></li>
+<li><a href="#修改数据">修改数据</a></li>
+</ul></li>
+<li><a href="#pwndbg-peda-gef">Pwndbg/Peda/Gef</a></li>
+<li><a href="#ropgadget-one-gadget">ROPgadget/one_gadget</a></li>
+<li><a href="#seccomp-tools">Seccomp Tools</a></li>
+<li><a href="#libcsearcher">LibcSearcher</a></li>
+<li><a href="#qemu">qemu</a></li>
+<li><a href="#编译相关">编译相关</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="pwn-notes">Pwn_notes</h1>
+
+<h2 id="常规思路">常规思路</h2>
+
+<ul>
+<li>检查保护情况</li>
+<li>判断漏洞函数，如 gets，scanf 等</li>
+<li>计算目标变量在堆栈中距离 epb 的偏移</li>
+<li>分析是否已经载入可利用的函数，如 system，execve 等</li>
+<li>分析是否有字符串/bin/sh</li>
+</ul>
+
+<h2 id="ida-pro-使用技巧">IDA Pro 使用技巧</h2>
+
+<p><a href="https://xz.aliyun.com/t/4205">IDA Pro7.0使用技巧总结</a></p>
+
+<h2 id="返回地址偏移获取">返回地址偏移获取</h2>
+
+<p>用 gets(&amp;s) 作为例子</p>
+
+<h3 id="方法一-ida-pattern-py">方法一：<code>IDA &amp;&amp; pattern.py</code></h3>
+
+<ol>
+<li><p>gdb 函数断点，查看 esp、ebp，结合 IDA 如： char s; // [esp+1Ch] [ebp-64h] ，计算变量 s 地址距离 ebp 的偏移，返回地址为 ebp+4（64位+8）</p></li>
+
+<li><p>使用 <code>pattern.py</code> 生成字符串，先结合 linux_serevr/linux_server64 以及 IDA 远程调试，通过在服务端将 pattern 生成的字符串作为输入确定覆盖的 ebp 的内容，使用命令：<code>python3 pattern.py 0x41366441</code>（比如覆盖的 ebp 内容为 0x41366441，对应字符串 A6dA）计算输入的 s 缓冲区地址距离 ebp 相差多少字节，如下图：</p></li>
+</ol>
+
+<p><img src="/img/2020/09/28/pattern.png" alt="pattern" /></p>
+
+<p>ebp 的内容可通过 IDA 获取，综上，偏移为 108 字节，ebp 之后是返回地址，即 108+4=112 字节</p>
+
+<h3 id="方法二-gdb-pattern-py">方法二：<code>Gdb &amp;&amp; pattern.py</code></h3>
+
+<ol>
+<li>gdb file_name</li>
+</ol>
+
+<p><img src="/img/2020/09/28/gdb.png" alt="gdb" /></p>
+
+<ol>
+<li><code>python pattern.py 500</code>，生成填充字符</li>
+</ol>
+
+<p><img src="/img/2020/09/28/pattern1.png" alt="pattern1" /></p>
+
+<ol>
+<li>将 <code>pattern.py</code>生成的字符粘贴至 gdb 调试窗口，查看报错信息</li>
+</ol>
+
+<p><img src="/img/2020/09/28/error_info.png" alt="error_info" /></p>
+
+<ol>
+<li><code>python pattern.py 0x37654136</code>，查看偏移量</li>
+</ol>
+
+<p><img src="/img/2020/09/28/get_offset.png" alt="get offset" /></p>
+
+<p>即偏移为 140 字节，距离返回地址的偏移为 140 + 4 = 144 字节</p>
+
+<h2 id="gdb-调试技巧">GDB 调试技巧</h2>
+
+<h3 id="基础操作">基础操作</h3>
+
+<ul>
+<li>s 步入执行，n 步过执行，c语言级别的断点定位，s会进入C函数内部,但是不会进入没有定位信息的函数</li>
+<li>si 步入执行，ni 步过执行，汇编级别的断点定位</li>
+<li>b 在某处下断点，可以用
+
+<ul>
+<li>b * adrress</li>
+<li>b function_name</li>
+<li>info b #查看断点信息</li>
+<li>delete 1 #删除第一个断点</li>
+<li>b 7 ，表示在源代码中第七行下断点，也可以 b a.c:7 来指定具体文件</li>
+</ul></li>
+<li>c 继续</li>
+<li>r 执行</li>
+<li>disas addr 查看 addr 处前后的反汇编代码，也可以是函数名字</li>
+</ul>
+
+<h3 id="查看数据">查看数据</h3>
+
+<ul>
+<li>p 系列
+
+<ul>
+<li>p system/main 显示某个函数地址</li>
+<li>p $esp 显示寄存器</li>
+<li>p/x p/a p/b p/s &hellip;</li>
+<li>p 0xff - 0xea 计算器</li>
+<li>print &amp;VarName 查看变量地址</li>
+<li>p * 0xffffebac 查看某个地址处的值</li>
+</ul></li>
+<li>x系列
+
+<ul>
+<li>x/xw addr 显示某个地址处开始的16进制内容，如果有符号表会加载符号表</li>
+<li>x/x $esp 查看 esp 寄存器中的值</li>
+<li>x/s addr 查看 addr 处的字符串</li>
+<li>x/b addr 查看 addr 处的字符</li>
+<li>x/i addr 查看 addr 处的反汇编结果</li>
+<li>gx,wx,bx,分别表示查看八字节，四字节，单字节，前面还可以跟数字，表示查看的数量，如 x/20gx</li>
+</ul></li>
+<li>info系列
+
+<ul>
+<li>info register $ebp 查看寄存器ebp中的内容 (简写为 i r ebp)</li>
+<li>i r eflags 查看状态寄存器</li>
+<li>i r ss 查看段寄存器</li>
+<li>i b 查看断点信息</li>
+<li>i functions 查看所有的函数</li>
+</ul></li>
+<li>disass addr 查看 addr 处前后的反汇编代码</li>
+<li>stack 20 查看栈内 20 个值</li>
+<li>vmmap 查看映射状况</li>
+<li>elfheader 查看 elf 文件中各个段的起始地址</li>
+<li>argc 打印出参数的数量。</li>
+<li>args 打印出 argv 的内容</li>
+<li>telescope +地址，直接以栈的形式查看某个地址</li>
+</ul>
+
+<h3 id="查找数据">查找数据</h3>
+
+<ul>
+<li>search 查找内存中的各种数据，能搜各种字节大小的数据，指针，整数，可用-h查看具体用法</li>
+<li>pwndbg 支持rop，ropper，ROPgadget</li>
+<li>plt，got，查看对应的表的内容</li>
+<li>code，查看 elf 的偏移基址</li>
+<li>canary 查看 canary 的值</li>
+<li>retaddr 打印出包含返回地址的堆栈地址</li>
+<li>find addr,+len,&ldquo;/bin/sh&rdquo; 查找字符串，peda 可直接 find &ldquo;/bin/sh&rdquo;</li>
+</ul>
+
+<h3 id="修改数据">修改数据</h3>
+
+<ul>
+<li>set $esp=0x110 修改寄存器的值</li>
+<li>set *0xf7ff3234=0x08042334 修改内存的值</li>
+<li>set args “asdasg” “afdasgasg” “agasdsa” 分别给参数1,2,3赋值</li>
+<li>set args “python -c &lsquo;print &ldquo;1234\x7f\xde&rdquo;&lsquo;“ 这个参数中用 python 脚本重写了一下，避免有些字符无法正确设置</li>
+<li>r “arg1” “arg2” “arg3” 设置参数</li>
+<li>run $(perl -e &lsquo;print &ldquo;A&rdquo;x20&rsquo;)</li>
+<li>run $(perl -e &lsquo;print &ldquo;A&rdquo;x20&rsquo;)</li>
+<li>使用 cyclic 100 创建100字符，用来溢出输入，再用 cyclic -l xxx 得到偏移</li>
+</ul>
+
+<p>参考：<a href="https://z3r3f.gitee.io/2018/12/03/GDB及其插件的常用调试技巧/">https://z3r3f.gitee.io/2018/12/03/GDB及其插件的常用调试技巧/</a></p>
+
+<h2 id="pwndbg-peda-gef">Pwndbg/Peda/Gef</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#pwndbg
+git clone https://github.com/pwndbg/pwndbg
+cd pwndbg
+./setup.sh
+
+#peda
+git clone https://github.com/longld/peda.git ~/peda
+echo &#34;source ~/peda/peda.py&#34; &gt;&gt; ~/.gdbinit
+
+#gef
+wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh| sh
+wget -q -O ~/.gdbinit-gef.py https://github.com/hugsy/gef/raw/master/gef.py
+echo source ~/.gdbinit-gef.py &gt;&gt; ~/.gdbinit</code></pre></td></tr></table>
+</div>
+</div>
+<p>gdb 插件自动选择脚本，放环境变量路径中，可通过  echo $PATH 查看环境变量（也可通过 vim ~/.gdbinit 注释掉不用的插件）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="k">function</span> Mode_change <span class="o">{</span>
+    <span class="nv">name</span><span class="o">=</span><span class="nv">$1</span>
+    <span class="nv">gdbinitfile</span><span class="o">=</span>~/.gdbinit    <span class="c1">#这个路径按照你的实际情况修改</span>
+    <span class="c1"># gdbinitfile=/root/Desktop/mode</span>
+    
+    <span class="nv">peda</span><span class="o">=</span><span class="s2">&#34;source ~/peda/peda.py&#34;</span>   <span class="c1">#这个路径按照你的实际情况修改</span>
+    <span class="nv">gef</span><span class="o">=</span><span class="s2">&#34;source ~/.gdbinit-gef.py&#34;</span>   <span class="c1">#这个路径按照你的实际情况修改</span>
+    <span class="nv">pwndbg</span><span class="o">=</span><span class="s2">&#34;source /opt/pwndbg/gdbinit.py&#34;</span>   <span class="c1">#这个路径按照你的实际情况修改</span>
+ 
+    <span class="nv">sign</span><span class="o">=</span><span class="k">$(</span>cat <span class="nv">$gdbinitfile</span> <span class="p">|</span> grep -n <span class="s2">&#34;#this place is controled by user&#39;s shell&#34;</span><span class="k">)</span>     
+           <span class="c1">#此处上面的查找内容要和你自己的保持一致</span>
+ 
+    <span class="nv">pattern</span><span class="o">=</span><span class="s2">&#34;:#this place is controled by user&#39;s shell&#34;</span>
+    <span class="nv">number</span><span class="o">=</span><span class="si">${</span><span class="nv">sign</span><span class="p">%</span><span class="nv">$pattern</span><span class="si">}</span>
+    <span class="nv">location</span><span class="o">=</span>$<span class="o">[</span>number+2<span class="o">]</span>
+ 
+    <span class="nv">parameter_add</span><span class="o">=</span><span class="si">${</span><span class="nv">location</span><span class="si">}</span>i
+    <span class="nv">parameter_del</span><span class="o">=</span><span class="si">${</span><span class="nv">location</span><span class="si">}</span>d
+ 
+    <span class="nv">message</span><span class="o">=</span><span class="s2">&#34;TEST&#34;</span>
+ 
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$name</span> -eq <span class="s2">&#34;1&#34;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+        sed -i <span class="s2">&#34;</span><span class="nv">$parameter_del</span><span class="s2">&#34;</span> <span class="nv">$gdbinitfile</span>
+        sed -i <span class="s2">&#34;</span><span class="nv">$parameter_add</span><span class="s2"> </span><span class="nv">$peda</span><span class="s2">&#34;</span> <span class="nv">$gdbinitfile</span>
+        <span class="nb">echo</span> -e <span class="s2">&#34;Please enjoy the peda!\n&#34;</span>
+    <span class="k">elif</span> <span class="o">[</span> <span class="nv">$name</span> -eq <span class="s2">&#34;2&#34;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+        sed -i <span class="s2">&#34;</span><span class="nv">$parameter_del</span><span class="s2">&#34;</span> <span class="nv">$gdbinitfile</span>
+        sed -i <span class="s2">&#34;</span><span class="nv">$parameter_add</span><span class="s2"> </span><span class="nv">$gef</span><span class="s2">&#34;</span> <span class="nv">$gdbinitfile</span>
+        <span class="nb">echo</span> -e <span class="s2">&#34;Please enjoy the gef!\n&#34;</span>
+    <span class="k">else</span>
+        sed -i <span class="s2">&#34;</span><span class="nv">$parameter_del</span><span class="s2">&#34;</span> <span class="nv">$gdbinitfile</span>
+        sed -i <span class="s2">&#34;</span><span class="nv">$parameter_add</span><span class="s2"> </span><span class="nv">$pwndbg</span><span class="s2">&#34;</span> <span class="nv">$gdbinitfile</span>
+        <span class="nb">echo</span> -e <span class="s2">&#34;Please enjoy the pwndbg!\n&#34;</span>
+    <span class="k">fi</span>
+    
+<span class="o">}</span>
+ 
+<span class="nb">echo</span> -e <span class="s2">&#34;Please choose one mode of GDB?\n1.peda    2.gef    3.pwndbg&#34;</span>
+ 
+<span class="nb">read</span> -p <span class="s2">&#34;Input your choice:&#34;</span> num
+ 
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$num</span> -eq <span class="s2">&#34;1&#34;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+    Mode_change <span class="nv">$num</span>
+<span class="k">elif</span> <span class="o">[</span> <span class="nv">$num</span> -eq <span class="s2">&#34;2&#34;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+    Mode_change <span class="nv">$num</span>
+<span class="k">elif</span> <span class="o">[</span> <span class="nv">$num</span> -eq <span class="s2">&#34;3&#34;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+    Mode_change <span class="nv">$num</span>
+<span class="k">else</span>
+    <span class="nb">echo</span> -e <span class="s2">&#34;Error!\nPleasse input right number!&#34;</span>
+<span class="k">fi</span>
+ 
+gdb <span class="nv">$1</span> <span class="nv">$2</span> <span class="nv">$3</span> <span class="nv">$4</span> <span class="nv">$5</span> <span class="nv">$6</span> <span class="nv">$7</span> <span class="nv">$8</span> <span class="nv">$9</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="ropgadget-one-gadget">ROPgadget/one_gadget</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 先安装 Capstone,它是一个轻量级的多平台架构支持的反汇编架构。
+sudo apt-get install python-capstone
+
+# 下载好 ROPgadget 解压，并进入文件夹中
+python setup.py install
+
+#查找汇编代码
+ROPgadget --binary file_name --only &#39;pop|ret&#39;
+
+#查找字符串
+ROPgadget --binary file_name --string &#39;/bin/sh&#39;
+
+#one_gadget
+sudo apt install ruby
+gem install one_gadget</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="seccomp-tools">Seccomp Tools</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">// 安装
+gem install seccomp-tools
+// 使用
+seccomp-tools dump ./orw</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="libcsearcher">LibcSearcher</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo pip install capstone
+git clone https://github.com/lieanu/LibcSearcher.git
+cd LibcSearcher
+python setup.py develop</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="qemu">qemu</h2>
+
+<p>arm 环境</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo apt-get install qemu
+sudo apt-get install qemu-system qemu-user-static binfmt-support
+#依赖
+sudo apt-get install -y gcc-arm-linux-gnueabi
+sudo apt-get install qemu libncurses5-dev gcc-arm-linux-gnueabi build-essential gdb-arm-none-eabi synaptic gcc-aarch64-linux-gnu eclipse-cdt git</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="编译相关">编译相关</h2>
+
+<p>编译 32 位程序：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#安装依赖
+sudo apt-get install build-essential module-assistant gcc-multilib g++-multilib
+or apt-get install libc6-dev-i386
+#编译
+gcc -m32 -fno-stack-protector -z execstack -o demo demo.c
+
+#关闭 ASLR
+echo 0 &gt; /proc/sys/kernel/randomize_va_space
+#打开 ASLR
+echo 2 &gt; /proc/sys/kernel/randomize_va_space</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dds2333</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-09-28
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/pwn/">PWN</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/2020/08/24/other_tips/">
+            <span class="next-text nav-default">Other_tips</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dds2014@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dds2333" class="iconfont icon-github" title="github"></a>
+  <a href="https://dds2333.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dds2333</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

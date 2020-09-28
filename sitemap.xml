@@ -10,27 +10,55 @@
   
   <url>
     <loc>https://dds2333.github.io/categories/</loc>
-    <lastmod>2020-08-24T22:45:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://dds2333.github.io/post/2020/08/24/other_tips/</loc>
-    <lastmod>2020-08-24T22:45:09+08:00</lastmod>
+    <lastmod>2020-09-28T21:58:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dds2333.github.io/post/</loc>
-    <lastmod>2020-08-24T22:45:09+08:00</lastmod>
+    <lastmod>2020-09-28T21:58:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/tags/pwn/</loc>
+    <lastmod>2020-09-28T21:58:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/categories/pwn/</loc>
+    <lastmod>2020-09-28T21:58:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/post/2020/09/28/pwn_notes/</loc>
+    <lastmod>2020-09-28T21:58:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dds2333.github.io/tags/</loc>
+    <lastmod>2020-09-28T21:58:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/</loc>
+    <lastmod>2020-09-28T21:58:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/post/2020/08/24/other_tips/</loc>
     <lastmod>2020-08-24T22:45:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -45,13 +73,6 @@
   
   <url>
     <loc>https://dds2333.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2020-08-24T22:45:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://dds2333.github.io/</loc>
     <lastmod>2020-08-24T22:45:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

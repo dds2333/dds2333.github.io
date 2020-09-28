@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PWN on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/categories/pwn/</link>
+    <description>Recent content in PWN on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 28 Sep 2020 21:58:28 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/categories/pwn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PWN Notes</title>
+      <link>https://dds2333.github.io/post/2020/09/28/pwn_notes/</link>
+      <pubDate>Mon, 28 Sep 2020 21:58:28 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/09/28/pwn_notes/</guid>
+      <description>Pwn_notes 常规思路 检查保护情况 判断漏洞函数，如 gets，scanf 等 计算目标变量在堆栈中距离 epb 的偏移 分析是否已经载入可利用的函数，如 system，e</description>
+    </item>
+    
+  </channel>
+</rss>
