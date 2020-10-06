@@ -6,7 +6,7 @@
     <description>Recent content on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 28 Sep 2020 21:58:28 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2020 08:54:16 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://dds2333.github.io/about/</guid>
       <description>滴~~ 渗透、CTF 菜鸡</description>
+    </item>
+    
+    <item>
+      <title>网络杂志的一些工具、资源收集</title>
+      <link>https://dds2333.github.io/post/2020/10/06/things_collect_of_magazion/</link>
+      <pubDate>Tue, 06 Oct 2020 08:54:16 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/10/06/things_collect_of_magazion/</guid>
+      <description>收集阮一峰网络杂志中一些自己认为有意思、有用的工具以及资源。详见：http://www.ruanyifeng.com/blog/ 127期： photoflare</description>
     </item>
     
     <item>

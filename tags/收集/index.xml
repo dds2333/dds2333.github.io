@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>工具 on 泡枸杞的咸鱼</title>
-    <link>https://dds2333.github.io/categories/%E5%B7%A5%E5%85%B7/</link>
-    <description>Recent content in 工具 on 泡枸杞的咸鱼</description>
+    <title>收集 on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/tags/%E6%94%B6%E9%9B%86/</link>
+    <description>Recent content in 收集 on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 06 Oct 2020 08:54:16 +0800</lastBuildDate>
     
-	<atom:link href="https://dds2333.github.io/categories/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dds2333.github.io/tags/%E6%94%B6%E9%9B%86/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://dds2333.github.io/post/2020/10/06/things_collect_of_magazion/</guid>
       <description>收集阮一峰网络杂志中一些自己认为有意思、有用的工具以及资源。详见：http://www.ruanyifeng.com/blog/ 127期： photoflare</description>
-    </item>
-    
-    <item>
-      <title>工具列表</title>
-      <link>https://dds2333.github.io/post/2019/12/08/list_of_tools/</link>
-      <pubDate>Sun, 08 Dec 2019 18:41:28 +0800</pubDate>
-      
-      <guid>https://dds2333.github.io/post/2019/12/08/list_of_tools/</guid>
-      <description>1.资产识别 1）fofa，shodan，Censys.io 2）whois：http://whois.chinaz.com 3）云悉：http:</description>
     </item>
     
   </channel>
