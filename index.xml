@@ -6,7 +6,7 @@
     <description>Recent content on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 06 Oct 2020 08:54:16 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 29 Nov 2020 19:42:49 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -21,12 +21,21 @@
     </item>
     
     <item>
+      <title>Atexec 免杀</title>
+      <link>https://dds2333.github.io/post/2020/11/29/atexec_sharp/</link>
+      <pubDate>Sun, 29 Nov 2020 19:42:49 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/11/29/atexec_sharp/</guid>
+      <description>在内网渗透的横向移动中，一般会用到 Psexec、Atexec这两个工具（目标 Windows），此处不深究它们的技术原理，而是针对 Atexec 的免杀问题</description>
+    </item>
+    
+    <item>
       <title>网络杂志的一些工具、资源收集</title>
       <link>https://dds2333.github.io/post/2020/10/06/things_collect_of_magazion/</link>
       <pubDate>Tue, 06 Oct 2020 08:54:16 +0800</pubDate>
       
       <guid>https://dds2333.github.io/post/2020/10/06/things_collect_of_magazion/</guid>
-      <description>收集阮一峰网络杂志中一些自己认为有意思、有用的工具以及资源。详见：http://www.ruanyifeng.com/blog/ 133期： 世</description>
+      <description>收集阮一峰网络杂志中一些自己认为有意思、有用的工具以及资源。详见：http://www.ruanyifeng.com/blog/ 135期 GitHub Pages</description>
     </item>
     
     <item>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>免杀 on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/tags/%E5%85%8D%E6%9D%80/</link>
+    <description>Recent content in 免杀 on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 29 Nov 2020 19:42:49 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/tags/%E5%85%8D%E6%9D%80/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Atexec 免杀</title>
+      <link>https://dds2333.github.io/post/2020/11/29/atexec_sharp/</link>
+      <pubDate>Sun, 29 Nov 2020 19:42:49 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/11/29/atexec_sharp/</guid>
+      <description>在内网渗透的横向移动中，一般会用到 Psexec、Atexec这两个工具（目标 Windows），此处不深究它们的技术原理，而是针对 Atexec 的免杀问题</description>
+    </item>
+    
+  </channel>
+</rss>
