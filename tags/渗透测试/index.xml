@@ -6,10 +6,19 @@
     <description>Recent content in 渗透测试 on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 21 Jun 2020 17:21:29 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 29 Dec 2020 20:22:32 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Pentest_notes</title>
+      <link>https://dds2333.github.io/post/2020/12/29/pentest_notes/</link>
+      <pubDate>Tue, 29 Dec 2020 20:22:32 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2020/12/29/pentest_notes/</guid>
+      <description>记录一些平时用到但容易忘的命令（有些命令比较基础，不宜用作实战），作为一个渗透菜鸡，在即将到来的 2021 年，以后可能没有热情去写东西了，做一条无欲</description>
+    </item>
     
     <item>
       <title>Vulnhub 靶机渗透之 pwnlab_init</title>
