@@ -44,12 +44,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dds2333.github.io/post/2020/08/24/other_tips/" />
 <meta property="article:published_time" content="2020-08-24T22:45:09+08:00" />
-<meta property="article:modified_time" content="2021-01-31T19:37:00+08:00" />
+<meta property="article:modified_time" content="2021-02-01T19:37:00+08:00" />
 <meta itemprop="name" content="Other_tips">
 <meta itemprop="description" content="收集一些工具及用法 🧐 图片转换：ImageMagick 官网：https://imagemagick.org/ 1 2 3 4 5 6 # macOS 需要安装 Ghostscript fonts $ brew install">
 <meta itemprop="datePublished" content="2020-08-24T22:45:09&#43;08:00" />
-<meta itemprop="dateModified" content="2021-01-31T19:37:00&#43;08:00" />
-<meta itemprop="wordCount" content="1594">
+<meta itemprop="dateModified" content="2021-02-01T19:37:00&#43;08:00" />
+<meta itemprop="wordCount" content="2003">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E5%85%B6%E4%BB%96/"> 其他 </a>
             </div>
-          <span class="more-meta"> 约 1594 字 </span>
+          <span class="more-meta"> 约 2003 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -156,6 +156,25 @@
 <li><a href="#开源远程管理工具">开源远程管理工具</a>
 <ul>
 <li><a href="#electerm">electerm</a></li>
+</ul></li>
+<li><a href="#开源数据库管理工具">开源数据库管理工具</a>
+<ul>
+<li><a href="#beekeeper-studio">Beekeeper Studio</a></li>
+<li><a href="#sqlectron-gui">SQLECTRON-GUI</a></li>
+</ul></li>
+<li><a href="#开源编辑器">开源编辑器</a>
+<ul>
+<li><a href="#vscodium">VSCodium</a></li>
+<li><a href="#atom">Atom</a></li>
+<li><a href="#notepad3">Notepad3</a></li>
+</ul></li>
+<li><a href="#替代百度的搜索引擎">替代百度的搜索引擎</a>
+<ul>
+<li><a href="#bing">Bing</a></li>
+<li><a href="#yandex">Yandex</a></li>
+<li><a href="#magi">Magi</a></li>
+<li><a href="#dogedoge-多吉">DogeDoge（多吉）</a></li>
+<li><a href="#qwant">Qwant</a></li>
 </ul></li>
 <li><a href="#markdown-语法教程">Markdown 语法教程</a></li>
 </ul>
@@ -420,17 +439,26 @@ openssl dgst [算法名称] [需要计算摘要的文件]</code></pre></td></tr>
 <p>Github：<a href="https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/">https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/</a></p>
 
 <h1 id="adb-卸载应用">ADB 卸载应用</h1>
-
-<ul>
-<li>手机打开 “开发者模式”-&gt;“usb debug”</li>
-<li>手机连接电脑，adb devices 查看设备（配合 adb kill-server、adb start-server）</li>
-<li>adb shell 连接</li>
-<li>pm list packages 列出所有包名</li>
-<li>pm list packages | grep &ldquo;camera&rdquo; 查找</li>
-<li>or 先将 app 打开，dumpsys window | grep mCurrentFocus 查看当前界面信息以获取包名</li>
-<li>pm uninstall -k &ndash;user 0 packageName 卸载（-k 表示保存数据，不保存可去掉 -k，&ndash;user 0 表示默认用户）</li>
-</ul>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">手机打开 “开发者模式”-&gt;“usb debug”
+手机连接电脑，adb devices 查看设备（配合 adb kill-server、adb start-server）
+adb shell 连接
+pm list packages 列出所有包名
+pm list packages | grep &#34;camera&#34; 查找
+or 先将 app 打开，dumpsys window | grep mCurrentFocus 查看当前界面信息以获取包名
+pm uninstall -k --user 0 packageName 卸载（-k 表示保存数据，不保存可去掉 -k，--user 0 表示默认用户）</code></pre></td></tr></table>
+</div>
+</div>
 <h1 id="密码学-编码与解码">密码学：编码与解码</h1>
 
 <h2 id="cyberchef">CyberChef</h2>
@@ -447,6 +475,54 @@ openssl dgst [算法名称] [需要计算摘要的文件]</code></pre></td></tr>
 
 <p>项目地址：<a href="https://github.com/electerm/electerm">https://github.com/electerm/electerm</a></p>
 
+<h1 id="开源数据库管理工具">开源数据库管理工具</h1>
+
+<h2 id="beekeeper-studio">Beekeeper Studio</h2>
+
+<p>项目地址：<a href="https://github.com/beekeeper-studio/beekeeper-studio">https://github.com/beekeeper-studio/beekeeper-studio</a></p>
+
+<h2 id="sqlectron-gui">SQLECTRON-GUI</h2>
+
+<p>项目地址：<a href="https://github.com/sqlectron/sqlectron-gui">https://github.com/sqlectron/sqlectron-gui</a></p>
+
+<h1 id="开源编辑器">开源编辑器</h1>
+
+<h2 id="vscodium">VSCodium</h2>
+
+<p>项目地址：<a href="https://github.com/VSCodium/vscodium">https://github.com/VSCodium/vscodium</a></p>
+
+<h2 id="atom">Atom</h2>
+
+<p>项目地址：<a href="https://github.com/atom/atom">https://github.com/atom/atom</a></p>
+
+<h2 id="notepad3">Notepad3</h2>
+
+<p>项目地址：<a href="https://github.com/rizonesoft/Notepad3">https://github.com/rizonesoft/Notepad3</a></p>
+
+<h1 id="替代百度的搜索引擎">替代百度的搜索引擎</h1>
+
+<p>注：诸如 Google 、DuckDuckGo 需要富强的此处不列举</p>
+
+<h2 id="bing">Bing</h2>
+
+<p>官网：<a href="https://www.bing.com/">https://www.bing.com/</a></p>
+
+<h2 id="yandex">Yandex</h2>
+
+<p>官网：<a href="https://yandex.com/">https://yandex.com/</a></p>
+
+<h2 id="magi">Magi</h2>
+
+<p>官网：<a href="https://magi.com/">https://magi.com/</a></p>
+
+<h2 id="dogedoge-多吉">DogeDoge（多吉）</h2>
+
+<p>官网：<a href="https://dogedoge.com/">https://dogedoge.com/</a></p>
+
+<h2 id="qwant">Qwant</h2>
+
+<p>官网：<a href="https://www.qwant.com/">https://www.qwant.com/</a></p>
+
 <h1 id="markdown-语法教程">Markdown 语法教程</h1>
 
 <p><a href="https://markdown.com.cn/">Markdown 语法</a></p>
@@ -461,7 +537,7 @@ openssl dgst [算法名称] [需要计算摘要的文件]</code></pre></td></tr>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2021-01-31
+        2021-02-01
         
     </span>
   </p>
