@@ -6,7 +6,7 @@
     <description>Recent content on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 29 Dec 2020 20:22:32 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Mar 2021 19:16:37 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://dds2333.github.io/about/</guid>
       <description>滴~~ 渗透、CTF 菜鸡</description>
+    </item>
+    
+    <item>
+      <title>Immunity Canvas 7.26 安装及使用</title>
+      <link>https://dds2333.github.io/post/2021/03/05/usage_of_canvas/</link>
+      <pubDate>Fri, 05 Mar 2021 19:16:37 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2021/03/05/usage_of_canvas/</guid>
+      <description>前两天看到外网上泄露此工具，想着安装使用一下，一直没抽出时间，倒是看到一些公众号推送如何安装之类，虽然不排除有的人确实在折腾，但看到几个都在</description>
     </item>
     
     <item>
