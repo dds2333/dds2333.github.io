@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>其他 on 泡枸杞的咸鱼</title>
-    <link>https://dds2333.github.io/categories/%E5%85%B6%E4%BB%96/</link>
-    <description>Recent content in 其他 on 泡枸杞的咸鱼</description>
+    <title>硬件 on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/tags/%E7%A1%AC%E4%BB%B6/</link>
+    <description>Recent content in 硬件 on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 04 May 2021 14:10:31 +0800</lastBuildDate>
     
-	<atom:link href="https://dds2333.github.io/categories/%E5%85%B6%E4%BB%96/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dds2333.github.io/tags/%E7%A1%AC%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://dds2333.github.io/post/2021/05/04/hardware_audio/</guid>
       <description>关于台式电脑机箱前面板音频杂音，相信不少折腾硬件的小伙伴都会遇到这个问题，这问题一般会存在于配置较高的台式电脑上，特别是还装备了高性能的显卡</description>
-    </item>
-    
-    <item>
-      <title>Other_Tips</title>
-      <link>https://dds2333.github.io/post/2020/08/24/other_tips/</link>
-      <pubDate>Mon, 24 Aug 2020 22:45:09 +0800</pubDate>
-      
-      <guid>https://dds2333.github.io/post/2020/08/24/other_tips/</guid>
-      <description>收集一些工具及用法 🧐 图片转换：ImageMagick 官网：https://imagemagick.org/ 1 2 3 4 5 6 # macOS 需要安装 Ghostscript fonts $ brew install</description>
     </item>
     
   </channel>

@@ -6,7 +6,7 @@
     <description>Recent content on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 05 Mar 2021 19:16:37 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 May 2021 14:10:31 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://dds2333.github.io/about/</guid>
       <description>滴~~ 渗透、CTF 菜鸡</description>
+    </item>
+    
+    <item>
+      <title>台式电脑机箱前面板音频杂音的解决方法</title>
+      <link>https://dds2333.github.io/post/2021/05/04/hardware_audio/</link>
+      <pubDate>Tue, 04 May 2021 14:10:31 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2021/05/04/hardware_audio/</guid>
+      <description>关于台式电脑机箱前面板音频杂音，相信不少折腾硬件的小伙伴都会遇到这个问题，这问题一般会存在于配置较高的台式电脑上，特别是还装备了高性能的显卡</description>
     </item>
     
     <item>
