@@ -10,21 +10,49 @@
   
   <url>
     <loc>https://dds2333.github.io/categories/</loc>
-    <lastmod>2021-05-30T22:25:00+08:00</lastmod>
+    <lastmod>2021-07-03T22:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dds2333.github.io/post/</loc>
-    <lastmod>2021-05-30T22:25:00+08:00</lastmod>
+    <lastmod>2021-07-03T22:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dds2333.github.io/tags/</loc>
-    <lastmod>2021-05-30T22:25:00+08:00</lastmod>
+    <lastmod>2021-07-03T22:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/post/2021/07/03/ransom_demo/</loc>
+    <lastmod>2021-07-03T21:59:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/</loc>
+    <lastmod>2021-07-03T21:59:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/</loc>
+    <lastmod>2021-07-03T21:59:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/</loc>
+    <lastmod>2021-07-03T22:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -39,13 +67,6 @@
   <url>
     <loc>https://dds2333.github.io/post/2021/05/04/hardware_audio/</loc>
     <lastmod>2021-05-04T14:10:31+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://dds2333.github.io/</loc>
-    <lastmod>2021-05-30T22:25:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -73,7 +94,7 @@
   
   <url>
     <loc>https://dds2333.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2021-05-30T22:25:00+08:00</lastmod>
+    <lastmod>2021-07-03T22:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -115,14 +136,14 @@
   
   <url>
     <loc>https://dds2333.github.io/tags/%E6%94%B6%E9%9B%86/</loc>
-    <lastmod>2021-05-30T22:25:00+08:00</lastmod>
+    <lastmod>2021-07-03T22:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dds2333.github.io/post/2020/10/06/things_collect_of_magazion/</loc>
-    <lastmod>2021-05-30T22:25:00+08:00</lastmod>
+    <lastmod>2021-07-03T22:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -185,13 +206,6 @@
   
   <url>
     <loc>https://dds2333.github.io/tags/%E5%93%88%E5%B8%8C/</loc>
-    <lastmod>2020-07-26T16:34:08+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://dds2333.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/</loc>
     <lastmod>2020-07-26T16:34:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

