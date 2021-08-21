@@ -6,7 +6,7 @@
     <description>Recent content on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 03 Jul 2021 21:59:08 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 21 Aug 2021 12:31:13 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,7 +17,16 @@
       <pubDate>Tue, 20 Aug 2019 21:38:52 +0800</pubDate>
       
       <guid>https://dds2333.github.io/about/</guid>
-      <description>滴~~ 渗透、CTF 菜鸡</description>
+      <description>滴~~ 曾经：渗透、CTF&amp;hellip; 现在：甲方摸鱼 未来：待定</description>
+    </item>
+    
+    <item>
+      <title>个人信息保护法</title>
+      <link>https://dds2333.github.io/post/2021/08/21/personal_information_protection_law/</link>
+      <pubDate>Sat, 21 Aug 2021 12:31:13 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2021/08/21/personal_information_protection_law/</guid>
+      <description>中华人民共和国个人信息保护法 （2021年8月20日第十三届全国人民代表大会常务委员会第三十次会议通过） 目 录 第一章 总 则 第二章 个人信息处理规则 &amp;</description>
     </item>
     
     <item>
@@ -26,7 +35,7 @@
       <pubDate>Sat, 03 Jul 2021 21:59:08 +0800</pubDate>
       
       <guid>https://dds2333.github.io/post/2021/07/03/ransom_demo/</guid>
-      <description>近一年勒索病毒越来越活跃，看了些文章后，本菜鸡在摸鱼时用 Python 写了个勒索软件核心的加解密功能 demo ，权当研究学习，请勿用于非法用途。 勒索病毒往往利用</description>
+      <description>近一年勒索病毒越来越活跃，看了些文章后，在摸鱼时用 Python 写了个勒索软件核心的加解密功能 demo ，权当研究学习，请勿用于非法用途。 勒索病毒往往利用对称密</description>
     </item>
     
     <item>
@@ -53,7 +62,7 @@
       <pubDate>Tue, 29 Dec 2020 20:22:32 +0800</pubDate>
       
       <guid>https://dds2333.github.io/post/2020/12/29/pentest_notes/</guid>
-      <description>记录一些平时用到但容易忘的命令（有些命令比较基础，不宜用作实战），作为一个渗透菜鸡，在即将到来的 2021 年，以后可能没有热情去写东西了，做一条无欲</description>
+      <description>记录一些平时用到但容易忘的命令（有些命令比较基础，不宜用作实战），在即将到来的 2021 年，以后可能没有热情去写东西了，做一条无欲无求的咸鱼也未尝不</description>
     </item>
     
     <item>
