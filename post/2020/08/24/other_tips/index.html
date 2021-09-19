@@ -44,12 +44,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dds2333.github.io/post/2020/08/24/other_tips/" />
 <meta property="article:published_time" content="2020-08-24T22:45:09+08:00" />
-<meta property="article:modified_time" content="2021-08-18T19:37:00+08:00" />
+<meta property="article:modified_time" content="2021-09-19T19:37:00+08:00" />
 <meta itemprop="name" content="Other_Tips">
 <meta itemprop="description" content="收集一些工具及用法 🧐 图片转换：ImageMagick 官网：https://imagemagick.org/ 1 2 3 4 5 6 # macOS 需要安装 Ghostscript fonts $ brew install">
 <meta itemprop="datePublished" content="2020-08-24T22:45:09&#43;08:00" />
-<meta itemprop="dateModified" content="2021-08-18T19:37:00&#43;08:00" />
-<meta itemprop="wordCount" content="2961">
+<meta itemprop="dateModified" content="2021-09-19T19:37:00&#43;08:00" />
+<meta itemprop="wordCount" content="3475">
 
 
 
@@ -139,8 +139,8 @@
         <div class="post-category">
             <a href="/categories/%E5%85%B6%E4%BB%96/"> 其他 </a>
             </div>
-          <span class="more-meta"> 约 2961 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 3475 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -161,11 +161,13 @@
 <li><a href="#密码学-编码与解码">密码学：编码与解码</a>
 <ul>
 <li><a href="#cyberchef">CyberChef</a></li>
+<li><a href="#chepy-命令行版的-cyberchef">Chepy (命令行版的 Cyberchef)</a></li>
 <li><a href="#ciphey">Ciphey</a></li>
 </ul></li>
 <li><a href="#开源远程管理工具">开源远程管理工具</a>
 <ul>
 <li><a href="#electerm">electerm</a></li>
+<li><a href="#mremoteng">mRemoteNG</a></li>
 </ul></li>
 <li><a href="#开源数据库管理工具">开源数据库管理工具</a>
 <ul>
@@ -187,6 +189,7 @@
 <ul>
 <li><a href="#obs-studio">OBS Studio</a></li>
 <li><a href="#screentogif">ScreenToGif</a></li>
+<li><a href="#licecap">LICEcap</a></li>
 </ul></li>
 <li><a href="#开源音视频编辑">开源音视频编辑</a>
 <ul>
@@ -202,6 +205,7 @@
 <li><a href="#ardour">Ardour</a></li>
 </ul></li>
 </ul></li>
+<li><a href="#开源字幕编辑">开源字幕编辑</a></li>
 <li><a href="#开源屏幕截图">开源屏幕截图</a>
 <ul>
 <li><a href="#sharex">ShareX</a></li>
@@ -219,21 +223,37 @@
 <li><a href="#mpv">MPV</a></li>
 <li><a href="#smplayer">SMPlayer</a></li>
 </ul></li>
+<li><a href="#开源音频标签编辑">开源音频标签编辑</a></li>
 <li><a href="#开源图片编辑-查看">开源图片编辑/查看</a>
 <ul>
 <li><a href="#gimp">GIMP</a></li>
 <li><a href="#inkscape">Inkscape</a></li>
 <li><a href="#darktable">Darktable</a></li>
 <li><a href="#imageglass">ImageGlass</a></li>
+<li><a href="#qimgv">Qimgv</a></li>
 </ul></li>
 <li><a href="#开源十六进制编辑器">开源十六进制编辑器</a>
 <ul>
 <li><a href="#imhex">ImHex</a></li>
+<li><a href="#madedit-mod">Madedit-Mod</a></li>
 </ul></li>
-<li><a href="#微软工具集">微软工具集</a>
+<li><a href="#开源安卓工具">开源安卓工具</a>
 <ul>
-<li><a href="#sysinternals-suite">Sysinternals Suite</a></li>
+<li><a href="#应用商店">应用商店</a></li>
+<li><a href="#otp-双因素认证器">OTP 双因素认证器</a></li>
+<li><a href="#十六进制查看器">十六进制查看器</a></li>
+<li><a href="#终端模拟器">终端模拟器</a></li>
+<li><a href="#linux-系统下载-配合-termux-使用">Linux 系统下载 (配合 Termux 使用)</a></li>
+<li><a href="#音视频播放">音视频播放</a></li>
+<li><a href="#浏览器">浏览器</a></li>
+<li><a href="#实用工具">实用工具</a></li>
+<li><a href="#密码管理器">密码管理器</a></li>
+<li><a href="#即时加密通讯">即时加密通讯</a></li>
+<li><a href="#电子书阅读器">电子书阅读器</a></li>
+<li><a href="#相机">相机</a></li>
+<li><a href="#simple-mobile-tools">Simple Mobile Tools</a></li>
 </ul></li>
+<li><a href="#微软工具集-sysinternals-suite">微软工具集 Sysinternals Suite</a></li>
 <li><a href="#nirsoft-工具集">Nirsoft 工具集</a></li>
 <li><a href="#替代百度的搜索引擎">替代百度的搜索引擎</a>
 <ul>
@@ -441,6 +461,7 @@ $ magick A.jpg -resize 50% -quality 50 B.jpg</code></pre></td></tr></table>
 <li>Wappalyzer - <a href="https://www.wappalyzer.com/">https://www.wappalyzer.com/</a></li>
 <li>Library Sniffer - <a href="https://github.com/justjavac/ReplaceGoogleCDN/">https://github.com/justjavac/ReplaceGoogleCDN/</a></li>
 <li>Print Friendly &amp; PDF - <a href="https://www.printfriendly.com/">https://www.printfriendly.com/</a></li>
+<li>ClearURLs - <a href="https://gitlab.com/KevinRoebert/ClearUrls">https://gitlab.com/KevinRoebert/ClearUrls</a></li>
 <li>AdGuard 广告拦截器  - <a href="https://github.com/AdguardTeam/AdguardBrowserExtension">https://github.com/AdguardTeam/AdguardBrowserExtension</a></li>
 <li>uBlock Origin - <a href="https://github.com/gorhill/uBlock/">https://github.com/gorhill/uBlock/</a></li>
 </ul>
@@ -535,6 +556,10 @@ pm uninstall -k --user 0 packageName 卸载（-k 表示保存数据，不保存�
 
 <p>项目地址：<a href="https://github.com/gchq/CyberChef">https://github.com/gchq/CyberChef</a></p>
 
+<h2 id="chepy-命令行版的-cyberchef">Chepy (命令行版的 Cyberchef)</h2>
+
+<p>项目地址：<a href="https://github.com/securisec/chepy">https://github.com/securisec/chepy</a></p>
+
 <h2 id="ciphey">Ciphey</h2>
 
 <p>项目地址：<a href="https://github.com/Ciphey/Ciphey">https://github.com/Ciphey/Ciphey</a></p>
@@ -544,6 +569,10 @@ pm uninstall -k --user 0 packageName 卸载（-k 表示保存数据，不保存�
 <h2 id="electerm">electerm</h2>
 
 <p>项目地址：<a href="https://github.com/electerm/electerm">https://github.com/electerm/electerm</a></p>
+
+<h2 id="mremoteng">mRemoteNG</h2>
+
+<p>项目地址：<a href="https://github.com/mRemoteNG/mRemoteNG">https://github.com/mRemoteNG/mRemoteNG</a></p>
 
 <h1 id="开源数据库管理工具">开源数据库管理工具</h1>
 
@@ -589,6 +618,10 @@ pm uninstall -k --user 0 packageName 卸载（-k 表示保存数据，不保存�
 
 <p>项目地址：<a href="https://github.com/NickeManarin/ScreenToGif">https://github.com/NickeManarin/ScreenToGif</a></p>
 
+<h2 id="licecap">LICEcap</h2>
+
+<p>官网：<a href="https://www.cockos.com/licecap/">https://www.cockos.com/licecap/</a></p>
+
 <p>另外 <a href="https://github.com/MathewSachin/Captura">Captura</a> 作者不再维护</p>
 
 <h1 id="开源音视频编辑">开源音视频编辑</h1>
@@ -616,6 +649,10 @@ pm uninstall -k --user 0 packageName 卸载（-k 表示保存数据，不保存�
 <h3 id="ardour">Ardour</h3>
 
 <p>官网：<a href="https://ardour.org/">https://ardour.org/</a> ，<a href="https://github.com/Ardour/ardour">Github</a></p>
+
+<h1 id="开源字幕编辑">开源字幕编辑</h1>
+
+<p>Subtitle Edit - <a href="https://www.nikse.dk/">https://www.nikse.dk/</a> , <a href="https://github.com/SubtitleEdit/subtitleedit">Github</a></p>
 
 <h1 id="开源屏幕截图">开源屏幕截图</h1>
 
@@ -657,6 +694,10 @@ pm uninstall -k --user 0 packageName 卸载（-k 表示保存数据，不保存�
 
 <p>官网：<a href="https://www.smplayer.info/">https://www.smplayer.info/</a></p>
 
+<h1 id="开源音频标签编辑">开源音频标签编辑</h1>
+
+<p>官网：<a href="https://picard.musicbrainz.org/">https://picard.musicbrainz.org/</a> , <a href="https://github.com/metabrainz/picard">Github</a></p>
+
 <h1 id="开源图片编辑-查看">开源图片编辑/查看</h1>
 
 <h2 id="gimp">GIMP</h2>
@@ -675,15 +716,89 @@ pm uninstall -k --user 0 packageName 卸载（-k 表示保存数据，不保存�
 
 <p>官网：<a href="https://imageglass.org/">https://imageglass.org/</a> , <a href="https://github.com/d2phap/ImageGlass">Github</a></p>
 
+<h2 id="qimgv">Qimgv</h2>
+
+<p>Github：<a href="https://github.com/easymodo/qimgv">https://github.com/easymodo/qimgv</a></p>
+
 <h1 id="开源十六进制编辑器">开源十六进制编辑器</h1>
 
 <h2 id="imhex">ImHex</h2>
 
 <p>Github: <a href="https://github.com/WerWolv/ImHex">https://github.com/WerWolv/ImHex</a></p>
 
-<h1 id="微软工具集">微软工具集</h1>
+<h2 id="madedit-mod">Madedit-Mod</h2>
 
-<h2 id="sysinternals-suite">Sysinternals Suite</h2>
+<p>Sourceforge：<a href="https://sourceforge.net/projects/madedit-mod/">https://sourceforge.net/projects/madedit-mod/</a></p>
+
+<h1 id="开源安卓工具">开源安卓工具</h1>
+
+<h2 id="应用商店">应用商店</h2>
+
+<ul>
+<li>F-droid - <a href="https://f-droid.org">https://f-droid.org</a></li>
+<li>Aurora Store - <a href="https://f-droid.org/en/packages/com.aurora.store/">https://f-droid.org/en/packages/com.aurora.store/</a></li>
+</ul>
+
+<h2 id="otp-双因素认证器">OTP 双因素认证器</h2>
+
+<ul>
+<li>Aegis - <a href="https://f-droid.org/en/packages/com.beemdevelopment.aegis/">https://f-droid.org/en/packages/com.beemdevelopment.aegis/</a> , <a href="https://github.com/beemdevelopment/Aegis">Github</a></li>
+<li>FreeOTP Plus - <a href="https://f-droid.org/packages/org.liberty.android.freeotpplus/">https://f-droid.org/packages/org.liberty.android.freeotpplus/</a> , <a href="https://github.com/helloworld1/FreeOTPPlus">Github</a></li>
+<li>FreeOTP - <a href="https://f-droid.org/en/packages/org.fedorahosted.freeotp/">https://f-droid.org/en/packages/org.fedorahosted.freeotp/</a> , <a href="https://github.com/freeotp/freeotp-android">Github</a></li>
+</ul>
+
+<h2 id="十六进制查看器">十六进制查看器</h2>
+
+<p>HexViewer - <a href="https://f-droid.org/en/packages/fr.ralala.hexviewer/">https://f-droid.org/en/packages/fr.ralala.hexviewer/</a> , <a href="https://github.com/Keidan/HexViewer/">Github</a></p>
+
+<h2 id="终端模拟器">终端模拟器</h2>
+
+<p>Termux - <a href="https://f-droid.org/en/packages/com.termux/">https://f-droid.org/en/packages/com.termux/</a> , <a href="https://github.com/termux/termux-app">Github</a></p>
+
+<h2 id="linux-系统下载-配合-termux-使用">Linux 系统下载 (配合 Termux 使用)</h2>
+
+<p>AnLinux - <a href="https://f-droid.org/en/packages/exa.lnx.a/">https://f-droid.org/en/packages/exa.lnx.a/</a> , <a href="https://github.com/EXALAB/AnLinux-Adfree">Github</a></p>
+
+<h2 id="音视频播放">音视频播放</h2>
+
+<p>Vanilla Music - <a href="https://f-droid.org/en/packages/ch.blinkenlights.android.vanilla/">https://f-droid.org/en/packages/ch.blinkenlights.android.vanilla/</a> , <a href="https://github.com/vanilla-music/vanilla">Github</a></p>
+
+<p>VLC 前文有，不赘诉</p>
+
+<h2 id="浏览器">浏览器</h2>
+
+<ul>
+<li>Fennec - <a href="https://f-droid.org/en/packages/org.mozilla.fennec_fdroid/">https://f-droid.org/en/packages/org.mozilla.fennec_fdroid/</a> , <a href="https://github.com/mozilla-mobile/fenix">Github</a></li>
+<li>Bromite - <a href="https://www.bromite.org/">https://www.bromite.org/</a> , <a href="https://github.com/bromite/bromite">Github</a></li>
+</ul>
+
+<h2 id="实用工具">实用工具</h2>
+
+<p>Trail Sense - <a href="https://f-droid.org/en/packages/com.kylecorry.trail_sense/">https://f-droid.org/en/packages/com.kylecorry.trail_sense/</a> , <a href="https://github.com/kylecorry31/Trail-Sense">Github</a></p>
+
+<h2 id="密码管理器">密码管理器</h2>
+
+<p>KeePassDX - <a href="https://f-droid.org/en/packages/com.kunzisoft.keepass.libre/">https://f-droid.org/en/packages/com.kunzisoft.keepass.libre/</a> , <a href="https://github.com/Kunzisoft/KeePassDX">Github</a></p>
+
+<h2 id="即时加密通讯">即时加密通讯</h2>
+
+<p>Session - <a href="https://getsession.org/">https://getsession.org/</a> , <a href="https://github.com/oxen-io/session-android">Github</a></p>
+
+<h2 id="电子书阅读器">电子书阅读器</h2>
+
+<p>Librera Reader - <a href="https://f-droid.org/en/packages/com.foobnix.pro.pdf.reader/">https://f-droid.org/en/packages/com.foobnix.pro.pdf.reader/</a> , <a href="https://github.com/foobnix/LibreraReader">Github</a></p>
+
+<h2 id="相机">相机</h2>
+
+<p>Open Camera - <a href="https://f-droid.org/en/packages/net.sourceforge.opencamera/">https://f-droid.org/en/packages/net.sourceforge.opencamera/</a> , <a href="https://sourceforge.net/p/opencamera/code/ci/master/tree/">Sourceforge</a></p>
+
+<h2 id="simple-mobile-tools">Simple Mobile Tools</h2>
+
+<p>官网：<a href="https://www.simplemobiletools.com/">https://www.simplemobiletools.com/</a> , <a href="https://github.com/SimpleMobileTools/">Github</a></p>
+
+<p>一系列 “简易工具”，包括相机、文件管理、闹钟，相册等</p>
+
+<h1 id="微软工具集-sysinternals-suite">微软工具集 Sysinternals Suite</h1>
 
 <p>官网：<a href="https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite">https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite</a></p>
 
@@ -750,7 +865,7 @@ pm uninstall -k --user 0 packageName 卸载（-k 表示保存数据，不保存�
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2021-08-18
+        2021-09-19
         
     </span>
   </p>
