@@ -6,7 +6,7 @@
     <description>Recent content on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 21 Aug 2021 12:31:13 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 27 Sep 2021 22:34:46 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://dds2333.github.io/about/</guid>
       <description>滴~~ 曾经：渗透、CTF&amp;hellip; 现在：甲方摸鱼 未来：待定</description>
+    </item>
+    
+    <item>
+      <title>获取 System 权限一种方法</title>
+      <link>https://dds2333.github.io/post/2021/09/27/psexec2system/</link>
+      <pubDate>Mon, 27 Sep 2021 22:34:46 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2021/09/27/psexec2system/</guid>
+      <description>在 “Other_Tips”中我收录了微软工具集：Sysinternals Suite ，工具集中有个名为 PsExec.exe 工具，这工具可比较方便的将 Administrator 提升为 System</description>
     </item>
     
     <item>
