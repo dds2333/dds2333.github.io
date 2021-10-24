@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>隐私 on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/tags/%E9%9A%90%E7%A7%81/</link>
+    <description>Recent content in 隐私 on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 24 Oct 2021 16:58:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/tags/%E9%9A%90%E7%A7%81/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>互联网隐私保护相关资源/工具整理</title>
+      <link>https://dds2333.github.io/post/2021/10/24/privacy_things/</link>
+      <pubDate>Sun, 24 Oct 2021 16:58:47 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2021/10/24/privacy_things/</guid>
+      <description>收集整理关于互联网中个人隐私保护的相关资源，主要以开源为主： 资源 Privacy Tools 官网：https://www.privacytools.io/ 网站收集注</description>
+    </item>
+    
+  </channel>
+</rss>
