@@ -10,49 +10,70 @@
   
   <url>
     <loc>https://dds2333.github.io/categories/</loc>
-    <lastmod>2021-10-28T23:58:00+08:00</lastmod>
+    <lastmod>2021-11-21T20:30:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dds2333.github.io/post/</loc>
-    <lastmod>2021-10-28T23:58:00+08:00</lastmod>
+    <lastmod>2021-11-21T20:30:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dds2333.github.io/tags/</loc>
-    <lastmod>2021-10-28T23:58:00+08:00</lastmod>
+    <lastmod>2021-11-21T20:30:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dds2333.github.io/post/2021/10/24/privacy_things/</loc>
-    <lastmod>2021-10-28T23:58:00+08:00</lastmod>
+    <loc>https://dds2333.github.io/post/2021/11/21/web_browser_things/</loc>
+    <lastmod>2021-11-21T20:30:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dds2333.github.io/categories/%E5%AE%89%E5%85%A8/</loc>
-    <lastmod>2021-10-28T23:58:00+08:00</lastmod>
+    <loc>https://dds2333.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
+    <lastmod>2021-11-21T20:30:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2021-11-21T20:30:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dds2333.github.io/</loc>
-    <lastmod>2021-10-28T23:58:00+08:00</lastmod>
+    <lastmod>2021-11-21T20:30:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/post/2021/10/24/privacy_things/</loc>
+    <lastmod>2021-11-21T19:20:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dds2333.github.io/categories/%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2021-11-21T19:20:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dds2333.github.io/tags/%E9%9A%90%E7%A7%81/</loc>
-    <lastmod>2021-10-28T23:58:00+08:00</lastmod>
+    <lastmod>2021-11-21T19:20:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -128,13 +149,6 @@
   </url>
   
   <url>
-    <loc>https://dds2333.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
-    <lastmod>2021-10-24T19:37:00+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://dds2333.github.io/post/2021/05/04/hardware_audio/</loc>
     <lastmod>2021-05-04T14:10:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -151,13 +165,6 @@
   <url>
     <loc>https://dds2333.github.io/post/2021/03/05/usage_of_canvas/</loc>
     <lastmod>2021-03-05T19:16:37+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://dds2333.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2021-10-24T19:37:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -234,7 +241,7 @@
   
   <url>
     <loc>https://dds2333.github.io/post/2020/08/24/other_tips/</loc>
-    <lastmod>2021-10-24T19:37:00+08:00</lastmod>
+    <lastmod>2021-11-21T19:37:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
