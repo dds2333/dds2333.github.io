@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>标准 on 泡枸杞的咸鱼</title>
+    <link>https://dds2333.github.io/tags/%E6%A0%87%E5%87%86/</link>
+    <description>Recent content in 标准 on 泡枸杞的咸鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 24 Jan 2022 22:45:09 +0800</lastBuildDate>
+    
+	<atom:link href="https://dds2333.github.io/tags/%E6%A0%87%E5%87%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>下载国标一种方式</title>
+      <link>https://dds2333.github.io/post/2022/01/24/a_way_to_download_gb_standard/</link>
+      <pubDate>Mon, 24 Jan 2022 22:45:09 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2022/01/24/a_way_to_download_gb_standard/</guid>
+      <description>访问全国标准信息公共服务平台：http://std.samr.gov.cn/ ，选择国家标准，随便选择一篇标准（选可在线预览的，如果某标准引用</description>
+    </item>
+    
+  </channel>
+</rss>
