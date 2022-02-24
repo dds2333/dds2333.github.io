@@ -6,7 +6,7 @@
     <description>Recent content on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 24 Jan 2022 22:45:09 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 24 Feb 2022 22:11:19 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://dds2333.github.io/about/</guid>
       <description>滴~~ 曾经：渗透、CTF&amp;hellip; 现在：甲方摸鱼 未来：待定</description>
+    </item>
+    
+    <item>
+      <title>国密随机数检测工具</title>
+      <link>https://dds2333.github.io/post/2022/02/24/prng_test_tool/</link>
+      <pubDate>Thu, 24 Feb 2022 22:11:19 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2022/02/24/prng_test_tool/</guid>
+      <description>前言 1) 随机数是许多密码算法/协议的重要组成部分；能找到这的朋友懂的都懂，无需赘言。 2) 此工具在 2019-2020 期间基于相关开源项目完成的，由于现在换了工作暂</description>
     </item>
     
     <item>
