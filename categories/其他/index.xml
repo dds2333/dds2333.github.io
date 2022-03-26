@@ -6,10 +6,19 @@
     <description>Recent content in 其他 on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 24 Jan 2022 22:45:09 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 26 Mar 2022 10:31:23 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/categories/%E5%85%B6%E4%BB%96/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>禁用/卸载 SIM 卡工具包</title>
+      <link>https://dds2333.github.io/post/2022/03/26/disable_stk/</link>
+      <pubDate>Sat, 26 Mar 2022 10:31:23 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2022/03/26/disable_stk/</guid>
+      <description>前段时间携号转网，从电信转移动（电信宽带太贵，用不起😑），换了张 SIM 卡，当手机每次重启时提示 “欢迎使用中国移动xxx”，真系顶你个肺！！！ 不能</description>
+    </item>
     
     <item>
       <title>下载国标一种方式</title>
