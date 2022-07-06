@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>FOSS alternative frontends - 泡枸杞的咸鱼</title>
+  <title>如何格式化一个写保护的戴尔 (DELL) 恢复 U 盘 - 泡枸杞的咸鱼</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="dds2333" /><meta name="description" content="官网: https://farside.link/ Github: https://github.com/benbusby/farside" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="dds2333" /><meta name="description" content="大学时买的是戴尔 (DELL) 笔记本，后来申请了个恢复 U 盘（见下图），里边是 Windows 8.1 系统镜像。去年翻出来想格式化，却因为写保护而作罢，最近想起来再折腾一下就" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.72.0 with theme even" />
 
 
-<link rel="canonical" href="https://dds2333.github.io/post/2022/04/25/farside/" />
+<link rel="canonical" href="https://dds2333.github.io/post/2022/07/06/disable_the_write_protection_on_dell_usb_recovery_drive/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="FOSS alternative frontends" />
-<meta property="og:description" content="官网: https://farside.link/ Github: https://github.com/benbusby/farside" />
+<meta property="og:title" content="如何格式化一个写保护的戴尔 (DELL) 恢复 U 盘" />
+<meta property="og:description" content="大学时买的是戴尔 (DELL) 笔记本，后来申请了个恢复 U 盘（见下图），里边是 Windows 8.1 系统镜像。去年翻出来想格式化，却因为写保护而作罢，最近想起来再折腾一下就" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dds2333.github.io/post/2022/04/25/farside/" />
-<meta property="article:published_time" content="2022-04-25T19:08:07+08:00" />
-<meta property="article:modified_time" content="2022-04-25T19:08:07+08:00" />
-<meta itemprop="name" content="FOSS alternative frontends">
-<meta itemprop="description" content="官网: https://farside.link/ Github: https://github.com/benbusby/farside">
-<meta itemprop="datePublished" content="2022-04-25T19:08:07&#43;08:00" />
-<meta itemprop="dateModified" content="2022-04-25T19:08:07&#43;08:00" />
-<meta itemprop="wordCount" content="6">
+<meta property="og:url" content="https://dds2333.github.io/post/2022/07/06/disable_the_write_protection_on_dell_usb_recovery_drive/" />
+<meta property="article:published_time" content="2022-07-06T19:37:02+08:00" />
+<meta property="article:modified_time" content="2022-07-06T19:37:02+08:00" />
+<meta itemprop="name" content="如何格式化一个写保护的戴尔 (DELL) 恢复 U 盘">
+<meta itemprop="description" content="大学时买的是戴尔 (DELL) 笔记本，后来申请了个恢复 U 盘（见下图），里边是 Windows 8.1 系统镜像。去年翻出来想格式化，却因为写保护而作罢，最近想起来再折腾一下就">
+<meta itemprop="datePublished" content="2022-07-06T19:37:02&#43;08:00" />
+<meta itemprop="dateModified" content="2022-07-06T19:37:02&#43;08:00" />
+<meta itemprop="wordCount" content="926">
 
 
 
-<meta itemprop="keywords" content="FOSS," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="FOSS alternative frontends"/>
-<meta name="twitter:description" content="官网: https://farside.link/ Github: https://github.com/benbusby/farside"/>
+<meta itemprop="keywords" content="硬件," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何格式化一个写保护的戴尔 (DELL) 恢复 U 盘"/>
+<meta name="twitter:description" content="大学时买的是戴尔 (DELL) 笔记本，后来申请了个恢复 U 盘（见下图），里边是 Windows 8.1 系统镜像。去年翻出来想格式化，却因为写保护而作罢，最近想起来再折腾一下就"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -132,15 +132,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">FOSS alternative frontends</h1>
+      <h1 class="post-title">如何格式化一个写保护的戴尔 (DELL) 恢复 U 盘</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2022-04-25 </span>
+        <span class="post-time"> 2022-07-06 </span>
         <div class="post-category">
             <a href="/categories/%E5%85%B6%E4%BB%96/"> 其他 </a>
             </div>
-          <span class="more-meta"> 约 6 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 926 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -152,9 +152,43 @@
   </div>
 </div>
     <div class="post-content">
-      <p>官网: <a href="https://farside.link/">https://farside.link/</a></p>
+      <p>大学时买的是戴尔 (DELL) 笔记本，后来申请了个恢复 U 盘（见下图），里边是 Windows 8.1 系统镜像。去年翻出来想格式化，却因为写保护而作罢，最近想起来再折腾一下就找到方法了😀。</p>
 
-<p>Github: <a href="https://github.com/benbusby/farside">https://github.com/benbusby/farside</a></p>
+<p><img src="/img/2022/07/06/USB.JPG" alt="DELL 恢复U盘" /></p>
+
+<p>方法在 2016 年的一个技术文章中（互联网考古）：<a href="http://www.techunboxed.com/2016/09/how-to-disable-write-protection-on-dell.html">http://www.techunboxed.com/2016/09/how-to-disable-write-protection-on-dell.html</a> ，用到的工具在原文的 Mega 网盘中，而我在 Github 找到了 ( <a href="https://github.com/amgxv/DellMentorMediaUSBFormat">https://github.com/amgxv/DellMentorMediaUSBFormat</a> )。</p>
+
+<p>下载工具后，插入 U 盘（记下接口 USB 是 2.0 还是 3.0 ，后面要用到），打开名为 “GetInfo v3.10.7.6” 的程序，输入盘符，点击 “read” 获取 U 盘信息（我的这个戴尔恢复 U 盘已经格式化成功，只作演示）：</p>
+
+<p><img src="/img/2022/07/06/getinfo.png" alt="获取 U 盘信息" /></p>
+
+<p>再打开名为 “MPALL_F1_7F00_DL07_v503_0A” 的程序，点击 “Update” 按钮，界面上会出现插入的 U 盘设备：</p>
+
+<p><img src="/img/2022/07/06/Capture1.PNG" alt="Update" /></p>
+
+<p>确定 U 盘已连接后，点击 “Setting” 按钮：</p>
+
+<p><img src="/img/2022/07/06/Capture2.PNG" alt="Setting" /></p>
+
+<p>保持默认的 “Basic Setting”、“New Setting” 就行，接着点击 “OK”。</p>
+
+<p>进入如下窗口：</p>
+
+<p><img src="/img/2022/07/06/Capture3.PNG" alt="Setting" /></p>
+
+<p>在此窗口中，点击 “Controller” 下拉框，选择 “PS2251-07”，在 “Host Port” 下拉框中选择之前插入 U 盘时的接口类型（2.0 或 3.0）；勾选 “Do ISP” 和 “Erase code block”，接着点击 “Select”，在 “MPALL_F1_7F00_DL07_v503_0A” 文件夹中选择名为 “BN07V502TAW.BIN” 的烧录文件（burner file），再点击下一行的 “Select”，选择名为 “FW07V50253TW.BIN” 的固件文件（firmware file）。</p>
+
+<p>下一步，在 “Customise Setting” 中，去掉 “Auto Detect” 的勾选框，分别输入前面获取的 VID、PID。设置完成后，应如下图所示：</p>
+
+<p><img src="/img/2022/07/06/Capture4.PNG" alt="Setting" /></p>
+
+<p>接着点击 “Save” 按钮保存设置或者 “Save As” 按钮将以上设置保存到另一个配置文件以便下次直接加载配置文件使用；保存完设置关闭窗口后，回到主程序窗口，此时若 U 盘 那是灰色或者未显示出来，再点击一次 “Update” 就刷新出来了。</p>
+
+<p>一切准备就绪，点击 “Start” 按钮，大概几分钟后，U 盘显示为绿色时就说明格式化成功，原来的写保护已被去除：</p>
+
+<p><img src="/img/2022/07/06/Capture5.PNG" alt="success" /></p>
+
+<p><img src="/img/2022/07/06/res.png" alt="Result" /></p>
 
     </div>
 
@@ -166,7 +200,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2022-04-25
+        2022-07-06
         
     </span>
   </p>
@@ -175,16 +209,12 @@
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/foss/">FOSS</a>
+          <a href="/tags/%E7%A1%AC%E4%BB%B6/">硬件</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/2022/07/06/disable_the_write_protection_on_dell_usb_recovery_drive/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">如何格式化一个写保护的戴尔 (DELL) 恢复 U 盘</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/2022/03/26/disable_stk/">
-            <span class="next-text nav-default">禁用/卸载 SIM 卡工具包</span>
+        
+        <a class="next" href="/post/2022/04/25/farside/">
+            <span class="next-text nav-default">FOSS alternative frontends</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

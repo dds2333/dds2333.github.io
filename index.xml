@@ -6,7 +6,7 @@
     <description>Recent content on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 25 Apr 2022 19:08:07 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 Jul 2022 19:37:02 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://dds2333.github.io/about/</guid>
       <description>滴~~ 曾经：渗透、CTF&amp;hellip; 现在：甲方摸鱼 未来：待定</description>
+    </item>
+    
+    <item>
+      <title>如何格式化一个写保护的戴尔 (DELL) 恢复 U 盘</title>
+      <link>https://dds2333.github.io/post/2022/07/06/disable_the_write_protection_on_dell_usb_recovery_drive/</link>
+      <pubDate>Wed, 06 Jul 2022 19:37:02 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2022/07/06/disable_the_write_protection_on_dell_usb_recovery_drive/</guid>
+      <description>大学时买的是戴尔 (DELL) 笔记本，后来申请了个恢复 U 盘（见下图），里边是 Windows 8.1 系统镜像。去年翻出来想格式化，却因为写保护而作罢，最近想起来再折腾一下就</description>
     </item>
     
     <item>
