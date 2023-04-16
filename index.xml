@@ -6,7 +6,7 @@
     <description>Recent content on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 30 Oct 2022 11:52:56 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 16 Apr 2023 15:16:16 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://dds2333.github.io/about/</guid>
       <description>滴~~ 曾经：渗透、CTF&amp;hellip; 现在：甲方摸鱼 未来：待定</description>
+    </item>
+    
+    <item>
+      <title>如何清除安卓的剪切版</title>
+      <link>https://dds2333.github.io/post/2023/04/16/clip_privacy/</link>
+      <pubDate>Sun, 16 Apr 2023 15:16:16 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2023/04/16/clip_privacy/</guid>
+      <description>众所周知，安卓系统（除了某些定制的ROM）的剪切板在权限中是无法关闭的，哪怕最新的安卓14，都未支持禁止 APP 读取剪切板（安卓12及以上版本，当</description>
     </item>
     
     <item>

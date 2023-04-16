@@ -6,10 +6,19 @@
     <description>Recent content in 隐私 on 泡枸杞的咸鱼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 24 Oct 2021 16:58:47 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 16 Apr 2023 15:16:16 +0800</lastBuildDate>
     
 	<atom:link href="https://dds2333.github.io/tags/%E9%9A%90%E7%A7%81/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>如何清除安卓的剪切版</title>
+      <link>https://dds2333.github.io/post/2023/04/16/clip_privacy/</link>
+      <pubDate>Sun, 16 Apr 2023 15:16:16 +0800</pubDate>
+      
+      <guid>https://dds2333.github.io/post/2023/04/16/clip_privacy/</guid>
+      <description>众所周知，安卓系统（除了某些定制的ROM）的剪切板在权限中是无法关闭的，哪怕最新的安卓14，都未支持禁止 APP 读取剪切板（安卓12及以上版本，当</description>
+    </item>
     
     <item>
       <title>互联网隐私保护相关资源/工具整理</title>
